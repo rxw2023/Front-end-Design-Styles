@@ -3,7 +3,6 @@
 > 参考 [UI UX Pro Max Skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) 通用风格列表扩充
 ---
 > [国外地址](https://front-end-design-styles.1276430450.workers.dev/)
----
 > [国内地址](https://oasis-fvwc.upma.site/)
 ---
 
