@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>有机自然 — Biophilic Design</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #f3f0e8; background-image: radial-gradient(ellipse at 20% 80%, rgba(139,166,130,0.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(193,180,138,0.1) 0%, transparent 50%); color: #4a4538; min-height: 100vh; }
+.back { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #8a8070; opacity: 0.5; padding: 2rem 0 0 2rem; }
+.back:hover { opacity: 1; }
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: #9a9078; opacity: 1; margin-bottom: 0.5rem; }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: #3a3528; margin-bottom: 0.3rem; }
+.sub { font-size: 0.75rem; font-family: 'DM Mono', monospace; margin-bottom: 2rem; color: #8a8070; opacity: 0.5; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.card { background: #fdfbf5; border: 1px solid rgba(140,130,110,0.12); border-radius: 16px; padding: 1.8rem; box-shadow: 0 2px 16px rgba(80,70,50,0.06); transition: all 0.35s; }
+.card:hover { box-shadow: 0 4px 24px rgba(80,70,50,0.1); transform: translateY(-2px); }
+.card .num { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #b0a890; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+.card h3 { font-size: 1.15rem; font-weight: 700; color: #3a3528; margin-bottom: 0.6rem; }
+.card p { font-size: 0.82rem; color: #6a6050; line-height: 1.7; }
+.card .leaf { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.feat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.feat { background: #f5f2e6; border-radius: 16px; padding: 1.5rem; border: 1px solid rgba(140,130,110,0.1); text-align: center; }
+.feat .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.feat h3 { font-size: 0.9rem; color: #4a5a3e; margin-bottom: 0.3rem; }
+.feat p { font-size: 0.75rem; color: #8a8070; }
+.palette { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; background: #f5f2e6; padding: 1.5rem; border-radius: 16px; }
+.palette .c { width: 48px; height: 48px; border-radius: 50%; border: 2px solid rgba(140,130,110,0.15); }
+@media (max-width:768px) { .feat-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<a href="#" id="backLink" class="back">← 返回首页</a>
+
+<div class="container">
+    <div class="label">— 07 · BIOPHILIC DESIGN</div>
+    <h1>有机自然设计</h1>
+    <div class="sub">大地色系 · 光斑肌理 · 16px圆角 · 自然暖光</div>
+
+    <div class="grid">
+        <div class="card"><div class="leaf">&#127799;</div><div class="num">NATURE 01</div><h3>大地色谱</h3><p>奶油米底 (#f3f0e8) + 暖木棕 + 柔和绿点缀，颜色模仿自然材质：土壤、树叶、阳光下的羊皮纸。</p></div>
+        <div class="card"><div class="leaf">&#127807;</div><div class="num">NATURE 02</div><h3>有机曲线</h3><p>16px大圆角、柔和过渡动画、平滑阴影扩散——避免尖锐直线，模拟自然界中的柔和曲线。</p></div>
+        <div class="card"><div class="leaf">&#127793;</div><div class="num">NATURE 03</div><h3>温和光影</h3><p>低对比度阴影系统 (0.06-0.1)，模拟漫反射阳光而非聚光灯，营造安静温暖的氛围。</p></div>
+        <div class="card"><div class="leaf">&#127794;</div><div class="num">NATURE 04</div><h3>自然留白</h3><p>充裕的间距和留白模仿自然界中的呼吸感，元素不拥挤，让内容和眼睛都有散步的空间。</p></div>
+        <div class="card"><div class="leaf">&#127795;</div><div class="num">NATURE 05</div><h3>材质肌理</h3><p>微妙的radial-gradient光斑模拟透过树叶的光影，卡片米白底色模仿手工纸触感。</p></div>
+        <div class="card"><div class="leaf">&#127809;</div><div class="num">NATURE 06</div><h3>绿色点缀</h3><p>鼠尾草绿(#6b8a5e)作为链接和交互色，克制而自然地点缀画面，不喧宾夺主。</p></div>
+    </div>
+
+    <div class="feat-row">
+        <div class="feat"><div class="icon">&#127811;</div><h3>生物亲和</h3><p>视觉与自然界建立连接，减少数字疲劳</p></div>
+        <div class="feat"><div class="icon">&#9728;</div><h3>暖光色调</h3><p>模拟自然光而非冷色屏幕光</p></div>
+        <div class="feat"><div class="icon">&#127810;</div><h3>有机节奏</h3><p>不规则留白和起伏，打破数字网格</p></div>
+    </div>
+
+    <div class="palette">
+        <div class="c" style="background:#f3f0e8" title="奶油米"></div>
+        <div class="c" style="background:#fdfbf5" title="手工纸"></div>
+        <div class="c" style="background:#4a4538" title="暖木棕"></div>
+        <div class="c" style="background:#6b8a5e" title="鼠尾草绿"></div>
+        <div class="c" style="background:#8ba682" title="苔绿色"></div>
+        <div class="c" style="background:#d5e0cc" title="嫩绿色"></div>
+    </div>
+</div>
+
+<script>
+var p=new URLSearchParams(location.search).get('from');
+document.getElementById('backLink').href=p?'index.html?page='+p:'index.html';
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新粗野主义 — Neo-Brutalism</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'DM Mono', monospace;
+    background: #f5f3ee;
+    background-image: radial-gradient(circle, #d4d0c8 1px, transparent 1px);
+    background-size: 20px 20px;
+    text-transform: uppercase;
+    min-height: 100vh;
+    color: #111;
+}
+.back { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; font-size: 0.7rem; letter-spacing: 0.1em; color: #111; opacity: 0.5; padding: 2rem 0 0 2rem; }
+.back:hover { opacity: 1; }
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.label { font-size: 0.7rem; font-family: 'DM Mono', monospace; letter-spacing: 0.2em; color: #888; opacity: 1 !important; margin-bottom: 0.5rem; }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: #111; margin-bottom: 0.3rem; letter-spacing: -0.02em; }
+.sub { font-size: 0.75rem; margin-bottom: 2rem; font-family: 'DM Mono', monospace; opacity: 0.5; color: #666; text-transform: none; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.card { background: #fff; border: 3px solid #111; box-shadow: 6px 6px 0 #111; padding: 1.5rem; transition: 0.15s; text-transform: none; }
+.card:hover { box-shadow: 8px 8px 0 #111; transform: translate(-2px, -2px); }
+.card .num { font-size: 0.7rem; color: #888; letter-spacing: 0.1em; text-transform: uppercase; }
+.card h3 { font-size: 1.1rem; margin: 0.5rem 0; text-transform: uppercase; }
+.card p { font-size: 0.7rem; color: #555; line-height: 1.6; text-transform: none; }
+.card .tag { display: inline-block; background: #111; color: #fff; font-size: 0.6rem; padding: 0.2rem 0.6rem; margin-top: 0.75rem; letter-spacing: 0.1em; }
+.card.featured { background: #111; color: #fff; }
+.card.featured p { color: #aaa; }
+.card.featured .tag { background: #fff; color: #111; }
+</style>
+</head>
+<body>
+
+<a href="#" id="backLink" class="back">← 返回首页</a>
+
+<div class="container">
+    <div class="label">— 01 · NEO-BRUTALISM</div>
+    <h1>新粗野主义</h1>
+    <div class="sub">粗边框 · 点阵背景 · 无圆角 · 大写等宽 · 实验编号</div>
+    <div class="grid">
+        <div class="card featured">
+            <div class="num">01</div>
+            <h3>粗边框 · 直角 · 点阵</h3>
+            <p>明确的粗边框分割线、原始网格背景、无圆角的块状布局。使用 radial-gradient 实现点阵纹理，配合卡片阴影强化物理感和未完成感。</p>
+            <span class="tag">实验性</span>
+        </div>
+        <div class="card">
+            <div class="num">02</div>
+            <h3>大写等宽标签</h3>
+            <p>DM Mono 等宽字体配合 text-transform: uppercase，营造工业/技术文档的粗粝气质。</p>
+            <span class="tag">排版</span>
+        </div>
+        <div class="card">
+            <div class="num">03</div>
+            <h3>点阵网格背景</h3>
+            <p>radial-gradient(circle, #d4d0c8 1px, transparent 1px) 以 background-size: 20px 控制密度。</p>
+            <span class="tag">纹理</span>
+        </div>
+        <div class="card">
+            <div class="num">04</div>
+            <h3>卡片无圆角布局</h3>
+            <p>border-radius: 0，直来直去的块状布局，拒绝一切柔化。</p>
+            <span class="tag">布局</span>
+        </div>
+        <div class="card">
+            <div class="num">05</div>
+            <h3>实验编号系统</h3>
+            <p>EXP. 01 命名体系强调「未完成 / 实验性」的粗粝感，赋予每个模块独特的编号身份。</p>
+            <span class="tag">编号</span>
+        </div>
+        <div class="card">
+            <div class="num">06</div>
+            <h3>border阴影分割</h3>
+            <p>使用明确的粗边框和硬阴影替代柔和分隔，视觉上更直接、更强烈。</p>
+            <span class="tag">分割</span>
+        </div>
+    </div>
+</div>
+
+<script>
+var p=new URLSearchParams(location.search).get('from');
+document.getElementById('backLink').href=p?'index.html?page='+p:'index.html';
+</script>
+</body>
+</html>

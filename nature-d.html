@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自然精粹 — Nature Distilled</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;min-height:100vh;transition:background .3s,color .3s}.back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.1em;padding:2rem 0 0 2rem;opacity:.5;color:var(--text-color)}.back:hover{opacity:1}.container{max-width:1200px;margin:0 auto;padding:2rem}.label{font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.2em;margin-bottom:.5rem;opacity:.5;color:var(--text-color)}h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;margin-bottom:.3rem;color:var(--heading-color)}.sub{font-size:.85rem;margin-bottom:2rem;font-family:DM Mono,monospace;opacity:.4;color:var(--text-color)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--card-radius,10px);padding:1.5rem;box-shadow:var(--card-shadow);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:var(--card-hover-shadow)}.card .num{font-family:DM Mono,monospace;font-size:.65rem;opacity:.3;letter-spacing:.15em;margin-bottom:.5rem}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--heading-color)}.card p{font-size:.82rem;line-height:1.7;color:var(--text-color);opacity:.7}.palette{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}.palette .c{width:40px;height:40px;border-radius:8px;border:1px solid var(--border-color);box-shadow:var(--card-shadow)}</style></head>
+<body class="theme-nature-d">
+<a href="index.html" id="backLink" class="back">&#8592; 返回首页</a>
+<div class="container">
+<div class="label">— 44 · NATURE DISTILLED</div>
+<h1>自然精粹</h1>
+<div class="sub">奶油底色 · 森林绿 · 提炼自然</div>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3>奶油米底色</h3><p>#f5f2eb——自然的颜色被提炼为最精华的暖米色，像羊皮纸在晨光中。</p></div>
+<div class="card"><div class="num">02</div><h3>森林绿header</h3><p>#5a6a4a不张扬的森林绿——经过提炼的、克制的自然。</p></div>
+<div class="card"><div class="num">03</div><h3>极弱阴影</h3><p>box-shadow: 0 1px 4px rgba(0,0,0,0.03)几乎不可见——自然中很少有纯黑投影。</p></div>
+<div class="card"><div class="num">04</div><h3>暖白卡片</h3><p>#fcfaf5比背景稍亮的暖白卡片，微妙色差区分层次——靠色彩温度不是阴影。</p></div>
+<div class="card"><div class="num">05</div><h3>深绿按钮</h3><p>鼠尾草绿按钮，hover时变深，像树叶从亮面翻到暗面。</p></div>
+<div class="card"><div class="num">06</div><h3>提炼而非模仿</h3><p>Nature Distilled把自然提炼为色彩和比例，而非直接借用自然形态。</p></div>
+</div>
+<div class="palette"><div class="c" style="background:#f5f2eb" title="#f5f2eb"></div><div class="c" style="background:#5a6a4a" title="#5a6a4a"></div><div class="c" style="background:#2a2418" title="#2a2418"></div><div class="c" style="background:#6a7a5a" title="#6a7a5a"></div><div class="c" style="background:#fcfaf5" title="#fcfaf5"></div></div>
+</div>
+
+<script>
+(function(){
+  var p=new URLSearchParams(location.search).get('from');
+  var link=document.getElementById('backLink');
+  if(p) link.href='index.html?page='+p;
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

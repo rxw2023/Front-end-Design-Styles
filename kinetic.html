@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>动态排版 — Kinetic Typography</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;min-height:100vh;transition:background .3s,color .3s}.back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.1em;padding:2rem 0 0 2rem;opacity:.5;color:var(--text-color)}.back:hover{opacity:1}.container{max-width:1200px;margin:0 auto;padding:2rem}.label{font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.2em;margin-bottom:.5rem;opacity:.5;color:var(--text-color)}h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;margin-bottom:.3rem;color:var(--heading-color)}.sub{font-size:.85rem;margin-bottom:2rem;font-family:DM Mono,monospace;opacity:.4;color:var(--text-color)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--card-radius,10px);padding:1.5rem;box-shadow:var(--card-shadow);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:var(--card-hover-shadow)}.card .num{font-family:DM Mono,monospace;font-size:.65rem;opacity:.3;letter-spacing:.15em;margin-bottom:.5rem}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--heading-color)}.card p{font-size:.82rem;line-height:1.7;color:var(--text-color);opacity:.7}.palette{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}.palette .c{width:40px;height:40px;border-radius:8px;border:1px solid var(--border-color);box-shadow:var(--card-shadow)}</style></head>
+<body class="theme-kinetic">
+<a href="index.html" id="backLink" class="back">&#8592; 返回首页</a>
+<div class="container">
+<div class="label">— 33 · KINETIC TYPOGRAPHY</div>
+<h1>动态排版</h1>
+<div class="sub">文字即视觉 · 超大字重 · 黑底白字</div>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3>文字是Hero</h3><p>标题本身(6rem/900字重)就是页面的视觉主角，没有图片和插画。</p></div>
+<div class="card"><div class="num">02</div><h3>紧凑行高</h3><p>line-height: 0.9让超大标题行与行之间几乎重叠，制造视觉冲击力。</p></div>
+<div class="card"><div class="num">03</div><h3>黑底白字</h3><p>纯黑背景上的纯白文字，极端对比让每个字母像被刻在空间中。</p></div>
+<div class="card"><div class="num">04</div><h3>暗色卡片</h3><p>#0a0a0a卡片通过1px #222边框微弱区分，保持暗色一致性。</p></div>
+<div class="card"><div class="num">05</div><h3>节奏感</h3><p>不同字号创造强烈的字体节奏，像音乐中的力度对比。</p></div>
+<div class="card"><div class="num">06</div><h3>影视级标题</h3><p>常用于电影海报、音乐节、设计工作室——文字不仅是信息，更是视觉艺术。</p></div>
+</div>
+<div class="palette"><div class="c" style="background:#000" title="#000"></div><div class="c" style="background:#fff" title="#fff"></div><div class="c" style="background:#ccc" title="#ccc"></div><div class="c" style="background:#0a0a0a" title="#0a0a0a"></div><div class="c" style="background:#222" title="#222"></div></div>
+</div>
+
+<script>
+(function(){
+  var p=new URLSearchParams(location.search).get('from');
+  var link=document.getElementById('backLink');
+  if(p) link.href='index.html?page='+p;
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日系编辑美学 — Japanese Editorial</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans SC', sans-serif; background: #f1f0ea; color: #2c2b28; min-height: 100vh; }
+.back { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; color: #8a8983; opacity: 0.5; padding: 2rem 0 0 2rem; }
+.back:hover { opacity: 1; }
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: #a0a09a; opacity: 1; margin-bottom: 0.5rem; }
+h1 { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900; line-height: 1.2; margin-bottom: 0.3rem; display: inline-block; position: relative; }
+h1::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 0.4em; background: #dfff00; z-index: -1; opacity: 0.7; }
+.sub { font-size: 0.75rem; margin-bottom: 2.5rem; font-family: 'DM Mono', monospace; opacity: 0.5; color: #8a8983; }
+.j-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: #d4d3cc; }
+.card { background: #faf9f4; padding: 1.5rem; }
+.card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; display: inline-block; position: relative; }
+.card h3::after { content: ''; position: absolute; left: 0; bottom: 2px; width: 100%; height: 0.3em; background: #dfff00; z-index: -1; opacity: 0.5; }
+.card p { font-size: 0.85rem; color: #5a5954; }
+.card .divider { height: 1px; background: #d4d3cc; margin: 0.75rem 0; }
+.card .en { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #a0a09a; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.featured { background: #faf9f4; border: 1px solid #d4d3cc; padding: 2rem; margin-top: 1.5rem; display: flex; gap: 2rem; align-items: flex-start; }
+.featured .num { font-family: 'DM Mono', monospace; font-size: 3rem; font-weight: 300; color: #d4d3cc; line-height: 1; }
+.featured .content h3 { font-size: 1.5rem; }
+.featured .content p { font-size: 0.85rem; color: #5a5954; }
+</style>
+</head>
+<body>
+
+<a href="#" id="backLink" class="back">← 返回首页</a>
+
+<div class="container">
+    <div class="label">— 03 · JAPANESE EDITORIAL</div>
+    <h1>日系编辑美学</h1>
+    <div class="sub">暖调纸色 · 中日文混排 · 柔和分割 · 荧光黄下划线</div>
+    <div class="j-grid">
+        <div class="card">
+            <div class="en">Paper Texture</div>
+            <h3>暖调纸色底</h3><div class="divider"></div>
+            <p>#f1f0ea 和 #faf9f4 模拟纸张肌理，营造温和的阅读氛围。</p>
+        </div>
+        <div class="card">
+            <div class="en">Typography</div>
+            <h3>中日文混排</h3><div class="divider"></div>
+            <p>Noto Sans SC 搭配 DM Mono 等宽字体，中文正文与英文等宽标签和谐共存。</p>
+        </div>
+        <div class="card">
+            <div class="en">Divider</div>
+            <h3>柔和分割线</h3><div class="divider"></div>
+            <p>#d4d3cc 暖灰色极低对比度分割线，不打扰阅读流。</p>
+        </div>
+        <div class="card">
+            <div class="en">Accent</div>
+            <h3>荧光黄装饰</h3><div class="divider"></div>
+            <p>标题后置 #dfff00 下划线装饰，常见于日本杂志封面。</p>
+        </div>
+        <div class="card">
+            <div class="en">Color</div>
+            <h3>低饱和色谱</h3><div class="divider"></div>
+            <p>全页面控制在低对比度暖色调范围内，仅用荧光黄一处亮色。</p>
+        </div>
+        <div class="card">
+            <div class="en">Layout</div>
+            <h3>编辑式构图</h3><div class="divider"></div>
+            <p>注重文字与留白的关系，以杂志内页的排版逻辑组织页面信息。</p>
+        </div>
+    </div>
+    <div class="featured">
+        <div class="num">◆</div>
+        <div class="content">
+            <h3>编辑设计的温度</h3>
+            <p>日系编辑美学强调纸张的触感、文字的呼吸感以及克制的装饰语言。暖调底色+柔和分割+荧光点缀，在安静中见亮点。</p>
+        </div>
+    </div>
+</div>
+
+<script>
+var p=new URLSearchParams(location.search).get('from');
+document.getElementById('backLink').href=p?'index.html?page='+p:'index.html';
+</script>
+</body>
+</html>

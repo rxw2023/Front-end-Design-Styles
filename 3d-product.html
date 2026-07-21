@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D产品展示 — 3D Product Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;min-height:100vh;transition:background .3s,color .3s}.back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.1em;padding:2rem 0 0 2rem;opacity:.5;color:var(--text-color)}.back:hover{opacity:1}.container{max-width:1200px;margin:0 auto;padding:2rem}.label{font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.2em;margin-bottom:.5rem;opacity:.5;color:var(--text-color)}h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;margin-bottom:.3rem;color:var(--heading-color)}.sub{font-size:.85rem;margin-bottom:2rem;font-family:DM Mono,monospace;opacity:.4;color:var(--text-color)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--card-radius,10px);padding:1.5rem;box-shadow:var(--card-shadow);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:var(--card-hover-shadow)}.card .num{font-family:DM Mono,monospace;font-size:.65rem;opacity:.3;letter-spacing:.15em;margin-bottom:.5rem}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--heading-color)}.card p{font-size:.82rem;line-height:1.7;color:var(--text-color);opacity:.7}.palette{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}.palette .c{width:40px;height:40px;border-radius:8px;border:1px solid var(--border-color);box-shadow:var(--card-shadow)}</style></head>
+<body class="theme-3d-product">
+<a href="index.html" id="backLink" class="back">&#8592; 返回首页</a>
+<div class="container">
+<div class="label">— 47 · 3D PRODUCT PREVIEW</div>
+<h1>3D产品展示</h1>
+<div class="sub">产品悬浮 · 深阴影 · Apple极简</div>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3>产品悬浮阴影</h3><p>box-shadow: 0 8px 30px在白色背景上制造深阴影，产品像漂浮在空间中。</p></div>
+<div class="card"><div class="num">02</div><h3>极简白背景</h3><p>#fafafa暖白背景，干净如产品摄影棚的无影墙。</p></div>
+<div class="card"><div class="num">03</div><h3>黑字黑按钮</h3><p>单色系统中产品是唯一的内容——设计退后，产品前移。</p></div>
+<div class="card"><div class="num">04</div><h3>12px精致圆角</h3><p>适中的圆角让卡片像产品展示台——不过分抢眼但足够精致。</p></div>
+<div class="card"><div class="num">05</div><h3>极简header</h3><p>白色header+黑色文字，像Apple官网一样简洁。</p></div>
+<div class="card"><div class="num">06</div><h3>电商高端化</h3><p>适合家具、时尚、高端电子产品——用极简容器盛装精美产品3D渲染。</p></div>
+</div>
+<div class="palette"><div class="c" style="background:#fafafa" title="#fafafa"></div><div class="c" style="background:#111" title="#111"></div><div class="c" style="background:#fff" title="#fff"></div><div class="c" style="background:#333" title="#333"></div><div class="c" style="background:#fff" title="#fff"></div></div>
+</div>
+
+<script>
+(function(){
+  var p=new URLSearchParams(location.search).get('from');
+  var link=document.getElementById('backLink');
+  if(p) link.href='index.html?page='+p;
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

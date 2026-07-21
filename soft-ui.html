@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>柔和UI进化 — Soft UI Evolution</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;min-height:100vh;transition:background .3s,color .3s}.back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.1em;padding:2rem 0 0 2rem;opacity:.5;color:var(--text-color)}.back:hover{opacity:1}.container{max-width:1200px;margin:0 auto;padding:2rem}.label{font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.2em;margin-bottom:.5rem;opacity:.5;color:var(--text-color)}h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;margin-bottom:.3rem;color:var(--heading-color)}.sub{font-size:.85rem;margin-bottom:2rem;font-family:DM Mono,monospace;opacity:.4;color:var(--text-color)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--card-radius,10px);padding:1.5rem;box-shadow:var(--card-shadow);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:var(--card-hover-shadow)}.card .num{font-family:DM Mono,monospace;font-size:.65rem;opacity:.3;letter-spacing:.15em;margin-bottom:.5rem}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--heading-color)}.card p{font-size:.82rem;line-height:1.7;color:var(--text-color);opacity:.7}.palette{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}.palette .c{width:40px;height:40px;border-radius:8px;border:1px solid var(--border-color);box-shadow:var(--card-shadow)}</style></head>
+<body class="theme-soft-ui">
+<a href="index.html" id="backLink" class="back">&#8592; 返回首页</a>
+<div class="container">
+<div class="label">— 23 · SOFT UI EVOLUTION</div>
+<h1>柔和UI进化</h1>
+<div class="sub">精致层次 · 浅灰蓝 · 企业级柔和</div>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3>精致多层阴影</h3><p>box-shadow叠加1px边框伪装+2px/12px细微阴影，比单层阴影更细腻。</p></div>
+<div class="card"><div class="num">02</div><h3>浅蓝灰底色</h3><p>#eef0f4极浅蓝灰底色，比纯白柔和比深色明亮，适合全天工作。</p></div>
+<div class="card"><div class="num">03</div><h3>蓝紫色按钮</h3><p>#6382dc蓝紫色主按钮，在浅灰背景下醒目但不刺眼。</p></div>
+<div class="card"><div class="num">04</div><h3>14px大圆角</h3><p>大圆角让卡片边缘非常柔和，配合浅色背景产生软垫般的视觉触感。</p></div>
+<div class="card"><div class="num">05</div><h3>微光边框</h3><p>1px rgba(0,0,0,0.04)边框几乎不可见但提供精确的像素级边界。</p></div>
+<div class="card"><div class="num">06</div><h3>企业级克制</h3><p>在Neumorphism和Flat Design间找到平衡，专业但不冷漠。</p></div>
+</div>
+<div class="palette"><div class="c" style="background:#eef0f4" title="#eef0f4"></div><div class="c" style="background:#6382dc" title="#6382dc"></div><div class="c" style="background:#fff" title="#fff"></div><div class="c" style="background:#2d3748" title="#2d3748"></div><div class="c" style="background:#f8faff" title="#f8faff"></div></div>
+</div>
+
+<script>
+(function(){
+  var p=new URLSearchParams(location.search).get('from');
+  var link=document.getElementById('backLink');
+  if(p) link.href='index.html?page='+p;
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

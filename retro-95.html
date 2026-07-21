@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复古 Win95 — Retro Windows 95</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'MS Sans Serif', 'Segoe UI', 'Inter', sans-serif; background: #008080; color: #000; font-size: 12px; min-height: 100vh; }
+.desktop { padding: 1rem; min-height: 100vh; }
+.back { display: inline-flex; align-items: center; gap: 0.25rem; text-decoration: none; color: #000; font-size: 11px; padding: 0.25rem 0.5rem; margin-bottom: 1rem; border-top: 2px solid #fff; border-left: 2px solid #fff; border-bottom: 2px solid #808080; border-right: 2px solid #808080; background: #c0c0c0; outline: 1px dotted #000; outline-offset: -4px; }
+.window { max-width: 1200px; margin: 0 auto; border-top: 2px solid #dfdfdf; border-left: 2px solid #dfdfdf; border-bottom: 2px solid #000; border-right: 2px solid #000; box-shadow: inset 1px 1px 0 #fff, 1px 1px 0 #808080; background: #c0c0c0; }
+.title-bar { background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 3px 4px; display: flex; align-items: center; justify-content: space-between; font-weight: bold; font-size: 12px; }
+.title-bar .ctrl { display: flex; gap: 2px; }
+.title-bar .ctrl button { width: 18px; height: 18px; border-top: 2px solid #fff; border-left: 2px solid #fff; border-bottom: 2px solid #808080; border-right: 2px solid #808080; background: #c0c0c0; font-size: 10px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+.menu { padding: 3px 6px; border-bottom: 1px solid #808080; display: flex; gap: 1rem; font-size: 12px; }
+.body { padding: 1rem; }
+.label { font-size: 11px; color: #000080; margin-bottom: 0.5rem; font-weight: bold; }
+h1 { font-size: 20px; color: #000; margin-bottom: 0.3rem; }
+.sub { font-size: 11px; color: #555; margin-bottom: 1.5rem; font-style: italic; }
+.toolbar { display: flex; gap: 4px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.tb-btn { padding: 4px 10px; border-top: 2px solid #fff; border-left: 2px solid #fff; border-bottom: 2px solid #808080; border-right: 2px solid #808080; box-shadow: inset 1px 1px 0 #dfdfdf; background: #c0c0c0; font-size: 11px; font-family: inherit; cursor: pointer; outline: 1px dotted #000; outline-offset: -4px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 8px; }
+.card { padding: 0.75rem; border-top: 2px solid #dfdfdf; border-left: 2px solid #dfdfdf; border-bottom: 2px solid #000; border-right: 2px solid #000; box-shadow: inset 1px 1px 0 #fff, 1px 1px 0 #808080; background: #c0c0c0; }
+.card h3 { font-size: 13px; font-weight: bold; color: #000080; margin-bottom: 0.5rem; }
+.card p { font-size: 11px; color: #000; line-height: 1.6; }
+.status-bar { margin-top: 1.5rem; padding: 4px 8px; border-top: 2px solid #808080; border-left: 2px solid #808080; border-bottom: 2px solid #fff; border-right: 2px solid #fff; display: flex; gap: 1rem; font-size: 11px; }
+.taskbar { position: fixed; bottom: 0; left: 0; right: 0; background: #c0c0c0; border-top: 2px solid #fff; padding: 3px 6px; display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: bold; z-index: 100; }
+.start-btn { padding: 3px 8px; border-top: 2px solid #fff; border-left: 2px solid #fff; border-bottom: 2px solid #808080; border-right: 2px solid #808080; background: #c0c0c0; cursor: pointer; outline: 1px dotted #000; outline-offset: -4px; }
+.clock { margin-left: auto; border-top: 2px solid #808080; border-left: 2px solid #808080; border-bottom: 2px solid #fff; border-right: 2px solid #fff; padding: 2px 8px; font-size: 11px; }
+@media (max-width:768px) { .window { margin: 0 0.5rem; } }
+</style>
+</head>
+<body>
+<div class="desktop">
+    <a href="#" id="backLink" class="back">&larr; 返回首页</a>
+    <div class="window">
+        <div class="title-bar"><span>复古 Win95 风格展示</span><div class="ctrl"><button>&#95;</button><button>&#9633;</button><button>&#10005;</button></div></div>
+        <div class="menu"><span>文件(F)</span><span>编辑(E)</span><span>查看(V)</span><span>帮助(H)</span></div>
+        <div class="body">
+            <div class="label">— 09 · RETRO WINDOWS 95</div>
+            <h1>复古 Win95 设计</h1>
+            <div class="sub">3D凸起边框 · #c0c0c0灰面板 · 渐变标题栏 · 任务栏</div>
+            <div class="toolbar">
+                <button class="tb-btn">立体边框</button><button class="tb-btn">凹陷面板</button><button class="tb-btn">等宽字体</button><button class="tb-btn">高对比</button>
+            </div>
+            <div class="grid">
+                <div class="card"><h3>3D 凸起边框</h3><p>border-top/left亮色+border-bottom/right暗色模拟经典立体凸起，outset配合inset阴影。</p></div>
+                <div class="card"><h3>凹陷面板</h3><p>输入框/状态栏用凹入效果：亮色在下、暗色在上，配合inset阴影模拟被按入桌面。</p></div>
+                <div class="card"><h3>98 桌面底色</h3><p>经典#008080青绿色桌面，Windows 95/98最具标志性的视觉符号之一。</p></div>
+                <div class="card"><h3>线性渐变标题栏</h3><p>深蓝#000080到亮蓝#1084d0的渐变，模拟Win95活动窗口标题栏。</p></div>
+                <div class="card"><h3>点状聚焦框</h3><p>outline:1px dotted配合outline-offset实现Win95经典的虚线焦点指示器。</p></div>
+                <div class="card"><h3>MS Sans Serif</h3><p>使用MS Sans Serif/Segoe UI等系统字体回退栈，还原90s桌面应用原生字体。</p></div>
+            </div>
+            <div class="status-bar"><span>就绪</span><span>| NUM</span><span style="flex:1;"></span><span>2026-07-21</span></div>
+        </div>
+    </div>
+</div>
+<div class="taskbar"><button class="start-btn"><span style="font-size:14px;">&#9728;</span> Start</button><span style="border:1px inset #808080;padding:1px 10px;font-weight:normal;">Win95 Style</span><span class="clock">14:30</span></div>
+
+<script>
+var p=new URLSearchParams(location.search).get('from');
+document.getElementById('backLink').href=p?'index.html?page='+p:'index.html';
+</script>
+</body>
+</html>

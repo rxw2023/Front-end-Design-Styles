@@ -1,0 +1,708 @@
+/* === 默认基础风格（常规通用） === */
+body {
+    --page-bg: #f5f6f8; background-image: none;
+    --text-color: #374151; --heading-color: #111827;
+    --link-color: #4f46e5; --link-hover-color: #4338ca;
+    --border-color: #e5e7eb;
+    --card-bg: #fff;
+    --card-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --card-hover-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    --header-bg: #fff;
+    --header-text: #111827;
+    --footer-text: #6b7280;
+    --button-bg: #4f46e5; --button-hover-bg: #4338ca; --button-text: #fff;
+    --button-radius: 6px;
+    --button-secondary-bg: #f3f4f6; --button-secondary-text: #374151;
+    --button-secondary-hover-bg: #e5e7eb;
+    --prompt-bg: #f9fafb; --prompt-text: #4b5563; --prompt-border: #e5e7eb;
+    --badge-bg: #eef2ff; --badge-text: #4f46e5;
+    --base-font: 'Inter', -apple-system, sans-serif;
+    --heading-font: 'Inter', -apple-system, sans-serif;
+    --card-radius: 8px;
+    font-family: var(--base-font);
+    color: var(--text-color);
+    background: var(--page-bg);
+    min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+a { color: var(--link-color); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--link-hover-color); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+header {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+header h1 { font-family: var(--heading-font); font-size: 1.8rem; margin-bottom: 0.3rem; color: inherit; }
+header p { font-size: 0.95rem; opacity: 0.8; color: inherit; }
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 1.5rem;
+    padding: 2.5rem 0;
+}
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--card-hover-shadow); }
+.card .card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.card .card-body h3 {
+    font-family: var(--heading-font);
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--heading-color);
+    margin-bottom: 0.5rem;
+}
+.card .card-body .desc {
+    font-size: 0.85rem; color: var(--text-color);
+    line-height: 1.6; margin-bottom: 1rem;
+}
+.card .card-body .prompt-box {
+    background: var(--prompt-bg);
+    border: 1px solid var(--prompt-border);
+    border-radius: 6px; padding: 0.75rem;
+    font-size: 0.78rem; color: var(--prompt-text);
+    font-family: 'DM Mono', 'Roboto Mono', monospace;
+    line-height: 1.5; margin-bottom: 1.2rem;
+}
+.card .card-body .badge-row { display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.card .card-body .badge {
+    display: inline-block; font-size: 0.7rem;
+    padding: 0.15rem 0.6rem; border-radius: 50px;
+    background: var(--badge-bg); color: var(--badge-text);
+}
+.card .card-actions { display: flex; gap: 0.6rem; margin-top: auto; }
+.btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 0.3rem; padding: 0.5em 1.2em;
+    border-radius: var(--button-radius); border: none;
+    font-size: 0.85rem; font-weight: 600; cursor: pointer;
+    text-decoration: none; transition: all 0.2s;
+    font-family: var(--base-font);
+}
+.btn-primary { background: var(--button-bg); color: var(--button-text); }
+.btn-primary:hover { background: var(--button-hover-bg); color: var(--button-text); }
+.btn-secondary { background: var(--button-secondary-bg); color: var(--button-secondary-text); }
+.btn-secondary:hover { background: var(--button-secondary-hover-bg); color: var(--button-secondary-text); }
+
+footer {
+    text-align: center; padding: 1.5rem;
+    font-size: 0.85rem; color: var(--footer-text);
+    border-top: 1px solid var(--border-color);
+    transition: background 0.3s, color 0.3s;
+}
+
+/* --- theme indicator bar --- */
+.theme-indicator {
+    position: fixed; bottom: 1rem; left: 50%;
+    transform: translateX(-50%);
+    background: var(--card-bg); color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 999px; padding: 0.4rem 1.2rem;
+    font-size: 0.75rem; font-weight: 600;
+    z-index: 100; box-shadow: var(--card-shadow);
+    display: none; align-items: center; gap: 0.75rem;
+    white-space: nowrap;
+}
+.theme-indicator.active { display: flex; }
+.theme-indicator button {
+    background: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+    border: none; border-radius: 999px;
+    padding: 0.2rem 0.8rem; font-size: 0.7rem;
+    cursor: pointer; font-weight: 600;
+}
+.theme-indicator button:hover { opacity: 0.8; }
+
+/* =============================================
+   THEME: 1. NEO-BRUTALISM
+   ============================================= */
+.theme-brutalism {
+    --page-bg: #f5f3ee;
+    background-image: radial-gradient(circle, #d4d0c8 1px, transparent 1px);
+    background-size: 20px 20px;
+    --text-color: #333; --heading-color: #111;
+    --link-color: #111; --link-hover-color: #000;
+    --border-color: #111;
+    --card-bg: #fff;
+    --card-shadow: 5px 5px 0 #111;
+    --card-hover-shadow: 7px 7px 0 #111;
+    --header-bg: #111; --header-text: #fff;
+    --footer-text: #666;
+    --button-bg: #111; --button-hover-bg: #333; --button-text: #fff;
+    --button-radius: 0;
+    --button-secondary-bg: #fff; --button-secondary-text: #111;
+    --button-secondary-hover-bg: #f5f5f5;
+    --prompt-bg: #fafafa; --prompt-text: #444; --prompt-border: #111;
+    --badge-bg: #111; --badge-text: #fff;
+    --base-font: 'DM Mono', monospace;
+    --heading-font: 'DM Mono', monospace;
+    --card-radius: 0;
+}
+.theme-brutalism .card { border: 3px solid var(--border-color); }
+.theme-brutalism h1, .theme-brutalism h2, .theme-brutalism h3 { text-transform: uppercase; letter-spacing: -0.02em; }
+
+/* =============================================
+   THEME: 2. SWISS STYLE
+   ============================================= */
+.theme-swiss {
+    --page-bg: #fafaf9; background-image: none; background-size: auto;
+    --text-color: #1a1a1a; --heading-color: #000;
+    --link-color: #e60000; --link-hover-color: #b30000;
+    --border-color: #e8e8e8;
+    --card-bg: #fff;
+    --card-shadow: none;
+    --card-hover-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    --header-bg: #000; --header-text: #fff;
+    --footer-text: #888;
+    --button-bg: #000; --button-hover-bg: #333; --button-text: #fff;
+    --button-radius: 0;
+    --button-secondary-bg: #f0f0f0; --button-secondary-text: #000;
+    --button-secondary-hover-bg: #ddd;
+    --prompt-bg: #f5f5f5; --prompt-text: #333; --prompt-border: #e0e0e0;
+    --badge-bg: #f5f5f5; --badge-text: #666;
+    --base-font: 'Inter', -apple-system, sans-serif;
+    --heading-font: 'Inter', -apple-system, sans-serif;
+    --card-radius: 0;
+}
+.theme-swiss .card { border: 1px solid var(--border-color); }
+.theme-swiss h1, .theme-swiss h2, .theme-swiss h3 { font-weight: 900; letter-spacing: -0.03em; }
+
+/* =============================================
+   THEME: 3. JAPANESE EDITORIAL
+   ============================================= */
+.theme-japanese {
+    --page-bg: #f1f0ea; background-image: none; background-size: auto;
+    --text-color: #3d3a35; --heading-color: #2c2b28;
+    --link-color: #2c2b28; --link-hover-color: #dfff00;
+    --border-color: #d4d3cc;
+    --card-bg: #faf9f4;
+    --card-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    --card-hover-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    --header-bg: #faf9f4; --header-text: #2c2b28;
+    --footer-text: #a0a09a;
+    --button-bg: #2c2b28; --button-hover-bg: #555; --button-text: #faf9f4;
+    --button-radius: 2px;
+    --button-secondary-bg: #e8e6dd; --button-secondary-text: #2c2b28;
+    --button-secondary-hover-bg: #d4d3cc;
+    --prompt-bg: #faf9f4; --prompt-text: #5a5954; --prompt-border: #d4d3cc;
+    --badge-bg: #dfff00; --badge-text: #2c2b28;
+    --base-font: 'Noto Sans SC', sans-serif;
+    --heading-font: 'Noto Sans SC', sans-serif;
+    --card-radius: 4px;
+}
+.theme-japanese h1, .theme-japanese h2, .theme-japanese h3 { font-weight: 900; }
+
+/* =============================================
+   THEME: 4. TERMINAL / CLI
+   ============================================= */
+.theme-terminal {
+    --page-bg: #0d0f0e; background-image: none; background-size: auto;
+    --text-color: #c5d0c0; --heading-color: #dfff00;
+    --link-color: #4ec97a; --link-hover-color: #8fdfb0;
+    --border-color: #2a302c;
+    --card-bg: #0f1211;
+    --card-shadow: none;
+    --card-hover-shadow: 0 0 0 1px #4ec97a;
+    --header-bg: #0d0f0e; --header-text: #dfff00;
+    --footer-text: #3a4a3e;
+    --button-bg: #1e2a1e; --button-hover-bg: #2a3a2a; --button-text: #4ec97a;
+    --button-radius: 2px;
+    --button-secondary-bg: #151716; --button-secondary-text: #5a6b5e;
+    --button-secondary-hover-bg: #1e2420;
+    --prompt-bg: #151716; --prompt-text: #5a6b5e; --prompt-border: #2a302c;
+    --badge-bg: #1e2a1e; --badge-text: #4ec97a;
+    --base-font: 'DM Mono', monospace;
+    --heading-font: 'DM Mono', monospace;
+    --card-radius: 0;
+}
+.theme-terminal .card { border: 1px solid var(--border-color); }
+
+/* =============================================
+   THEME: 5. GLASSMORPHISM
+   ============================================= */
+.theme-glass {
+    --page-bg: #0a0e27;
+    background: linear-gradient(135deg, #0a0e27, #141a3a, #0d1228);
+    background-size: auto;
+    --text-color: #c5d0e8; --heading-color: #e8eaf0;
+    --link-color: #dfff00; --link-hover-color: #2454ff;
+    --border-color: rgba(255,255,255,0.1);
+    --card-bg: rgba(255,255,255,0.06);
+    --card-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    --card-hover-shadow: 0 6px 30px rgba(0,0,0,0.4);
+    --header-bg: rgba(255,255,255,0.04); --header-text: #e8eaf0;
+    --footer-text: #5a6a8a;
+    --button-bg: rgba(223,255,0,0.15); --button-hover-bg: rgba(223,255,0,0.3); --button-text: #dfff00;
+    --button-radius: 8px;
+    --button-secondary-bg: rgba(36,84,255,0.15); --button-secondary-text: #5a8aff;
+    --button-secondary-hover-bg: rgba(36,84,255,0.3);
+    --prompt-bg: rgba(0,0,0,0.2); --prompt-text: #8a9ab8; --prompt-border: rgba(255,255,255,0.06);
+    --badge-bg: rgba(223,255,0,0.12); --badge-text: #dfff00;
+    --base-font: 'Inter', -apple-system, sans-serif;
+    --heading-font: 'Inter', -apple-system, sans-serif;
+    --card-radius: 12px;
+}
+.theme-glass .card {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* =============================================
+   THEME: 6. VOXEL AESTHETIC
+   ============================================= */
+.theme-voxel {
+    --page-bg: #3d3d3d;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 16px 16px;
+    --text-color: #c8c0a8; --heading-color: #87CEEB;
+    --link-color: #7B8F3A; --link-hover-color: #C4A87C;
+    --border-color: #555;
+    --card-bg: #4a4a4a;
+    --card-shadow: inset 0 -4px 0 #2B2B2B, 4px 4px 0 #2B2B2B;
+    --card-hover-shadow: inset 0 -4px 0 #2B2B2B, 6px 6px 0 #2B2B2B;
+    --header-bg: #2B2B2B; --header-text: #C4A87C;
+    --footer-text: #6d6d6d;
+    --button-bg: #6d6d6d; --button-hover-bg: #8a8a8a; --button-text: #e8e0d0;
+    --button-radius: 0;
+    --button-secondary-bg: #2B2B2B; --button-secondary-text: #8a7a6a;
+    --button-secondary-hover-bg: #3d3d3d;
+    --prompt-bg: #2B2B2B; --prompt-text: #8a7a6a; --prompt-border: #555;
+    --badge-bg: #7B8F3A; --badge-text: #e8e0d0;
+    --base-font: 'Press Start 2P', monospace;
+    --heading-font: 'Press Start 2P', monospace;
+    --card-radius: 0;
+    image-rendering: pixelated;
+}
+.theme-voxel .card { border: 2px solid #6d6d6d; }
+.theme-voxel h1, .theme-voxel h2, .theme-voxel h3 {
+    text-shadow: 2px 2px 0 #2B2B2B; font-weight: 400;
+    font-size: clamp(0.6rem, 2vw, 1rem);
+}
+
+/* =============================================
+   THEME: 7. 有机自然 Biophilic
+   ============================================= */
+.theme-biophilic {
+    --page-bg: #f3f0e8;
+    background-image:
+        radial-gradient(ellipse at 20% 80%, rgba(139,166,130,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(193,180,138,0.12) 0%, transparent 50%);
+    background-size: auto;
+    --text-color: #4a4538; --heading-color: #3a3528;
+    --link-color: #6b8a5e; --link-hover-color: #4a6a3e;
+    --border-color: #d8d3c4;
+    --card-bg: #fdfbf5;
+    --card-shadow: 0 2px 16px rgba(80,70,50,0.08), 0 0 0 1px rgba(140,130,110,0.08);
+    --card-hover-shadow: 0 4px 24px rgba(80,70,50,0.12), 0 0 0 1px rgba(100,140,90,0.15);
+    --header-bg: #4a5a3e; --header-text: #f3f0e8;
+    --footer-text: #8a8070;
+    --button-bg: #7a8a6e; --button-hover-bg: #6a7a5e; --button-text: #fff;
+    --button-radius: 24px;
+    --button-secondary-bg: #e8e4d8; --button-secondary-text: #5a5038;
+    --button-secondary-hover-bg: #ddd8c8;
+    --prompt-bg: #f5f2e6; --prompt-text: #6a6050; --prompt-border: #d8d3c4;
+    --badge-bg: #d5e0cc; --badge-text: #4a5a3e;
+    --base-font: 'Inter', -apple-system, sans-serif;
+    --heading-font: 'Inter', -apple-system, sans-serif;
+    --card-radius: 16px;
+}
+.theme-biophilic .card {
+    border: 1px solid rgba(140,130,110,0.12);
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.theme-biophilic .card:hover {
+    transform: translateY(-3px);
+}
+.theme-biophilic h1, .theme-biophilic h2, .theme-biophilic h3 { font-weight: 700; }
+.theme-biophilic header { border-bottom: 3px solid #8ba682; }
+
+/* =============================================
+   THEME: 8. 新拟物化 Neumorphism
+   ============================================= */
+.theme-neumorphism {
+    --page-bg: #e0e5ec; background-image: none; background-size: auto;
+    --text-color: #5a6575; --heading-color: #3a4a5a;
+    --link-color: #6c8aaf; --link-hover-color: #4a6a8f;
+    --border-color: transparent;
+    --card-bg: #e0e5ec;
+    --card-shadow: 8px 8px 16px #c2c8d2, -8px -8px 16px #fefeff;
+    --card-hover-shadow: 12px 12px 24px #b8bec8, -12px -12px 24px #ffffff;
+    --header-bg: #e0e5ec; --header-text: #3a4a5a;
+    --footer-text: #8a95a5;
+    --button-bg: #e0e5ec; --button-hover-bg: #e0e5ec; --button-text: #5a6575;
+    --button-radius: 14px;
+    --button-secondary-bg: #e0e5ec; --button-secondary-text: #6c8aaf;
+    --button-secondary-hover-bg: #e0e5ec;
+    --prompt-bg: #eef0f5; --prompt-text: #5a6575; --prompt-border: transparent;
+    --badge-bg: #e0e5ec; --badge-text: #8a95a5;
+    --base-font: 'Inter', -apple-system, sans-serif;
+    --heading-font: 'Inter', -apple-system, sans-serif;
+    --card-radius: 20px;
+}
+.theme-neumorphism .card {
+    border: none;
+    border-radius: 20px;
+}
+.theme-neumorphism .btn {
+    border: none;
+    box-shadow: 4px 4px 8px #c2c8d2, -4px -4px 8px #fefeff;
+}
+.theme-neumorphism .btn:hover {
+    box-shadow: 6px 6px 12px #b8bec8, -6px -6px 12px #ffffff;
+}
+.theme-neumorphism .btn:active {
+    box-shadow: inset 3px 3px 6px #c2c8d2, inset -3px -3px 6px #fefeff;
+}
+.theme-neumorphism .prompt-box {
+    box-shadow: inset 4px 4px 8px #c2c8d2, inset -4px -4px 8px #fefeff;
+    border: none;
+}
+.theme-neumorphism header {
+    box-shadow: inset 0 -4px 8px rgba(0,0,0,0.05);
+    border-bottom: none;
+}
+
+/* =============================================
+   THEME: 9. 复古 90 年代 / Win95
+   ============================================= */
+.theme-retro95 {
+    --page-bg: #008080; background-image: none; background-size: auto;
+    --text-color: #000; --heading-color: #000;
+    --link-color: #0000ee; --link-hover-color: #551a8b;
+    --border-color: #808080;
+    --card-bg: #c0c0c0;
+    --card-shadow: none;
+    --card-hover-shadow: none;
+    --header-bg: linear-gradient(90deg, #000080, #1084d0);
+    --header-text: #fff;
+    --footer-text: #000;
+    --button-bg: #c0c0c0; --button-hover-bg: #c0c0c0; --button-text: #000;
+    --button-radius: 0;
+    --button-secondary-bg: #c0c0c0; --button-secondary-text: #000;
+    --button-secondary-hover-bg: #c0c0c0;
+    --prompt-bg: #fff; --prompt-text: #000; --prompt-border: #808080;
+    --badge-bg: #c0c0c0; --badge-text: #000;
+    --base-font: 'MS Sans Serif', 'Segoe UI', 'Inter', sans-serif;
+    --heading-font: 'MS Sans Serif', 'Segoe UI', 'Inter', sans-serif;
+    --card-radius: 0;
+    font-family: 'MS Sans Serif', 'Segoe UI', 'Inter', sans-serif;
+    font-size: 12px;
+}
+.theme-retro95 .card {
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #808080;
+    border-right: 2px solid #808080;
+    box-shadow: inset 1px 1px 0 #dfdfdf, 1px 1px 0 #000;
+    background: #c0c0c0;
+}
+.theme-retro95 .card:hover { transform: none; }
+.theme-retro95 .btn {
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #808080;
+    border-right: 2px solid #808080;
+    box-shadow: inset 1px 1px 0 #dfdfdf, 1px 1px 0 #000;
+    background: #c0c0c0;
+    font-family: 'MS Sans Serif', 'Segoe UI', 'Inter', sans-serif;
+    font-size: 12px;
+    outline: 1px dotted #000;
+    outline-offset: -4px;
+}
+.theme-retro95 .btn:active {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    box-shadow: none;
+    transform: none;
+}
+.theme-retro95 .prompt-box {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    background: #fff;
+}
+
+/* =============================================
+   THEME: 10. 3D & Hyperrealism
+   ============================================= */
+.theme-3d-hyper { --page-bg: #0f0f1a; background: radial-gradient(ellipse at 50% 30%, #1a2040, #0a0a14); --text-color: #a0b0cc; --heading-color: #d0d8f0; --card-bg: linear-gradient(135deg, rgba(30,35,55,0.9), rgba(20,25,40,0.95)); --card-shadow: 0 10px 40px rgba(0,0,0,0.5); --card-hover-shadow: 0 20px 60px rgba(0,0,0,0.6); --header-bg: rgba(10,10,20,0.95); --header-text: #d0d8f0; --button-bg: #3355cc; --button-hover-bg: #4466dd; --button-text: #fff; --button-radius: 8px; --card-radius: 14px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; perspective: 1000px; }
+.theme-3d-hyper .card { border: 1px solid rgba(255,255,255,0.06); transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); transform: translateZ(0); }
+.theme-3d-hyper .card:hover { transform: translateY(-15px) translateZ(50px) rotateX(5deg) rotateY(-3deg); }
+
+/* =============================================
+   THEME: 11. Vibrant & Block-based
+   ============================================= */
+.theme-vibrant { --page-bg: #fafafa; background: #fff; --text-color: #222; --heading-color: #111; --card-bg: #fff; --card-shadow: 0 4px 0 #111; --card-hover-shadow: 0 8px 0 #111; --header-bg: #ff6b6b; --header-text: #fff; --button-bg: #ffd93d; --button-hover-bg: #ffc107; --button-text: #111; --button-radius: 0; --card-radius: 0; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; --prompt-bg: #f5f5f5; --prompt-text: #444; }
+.theme-vibrant .card { border: 3px solid #111; }
+
+/* =============================================
+   THEME: 12. Dark Mode OLED
+   ============================================= */
+.theme-dark-oled { --page-bg: #000; background: #000; --text-color: #aaa; --heading-color: #fff; --card-bg: #0a0a0a; --card-shadow: 0 0 0 1px #222; --card-hover-shadow: 0 0 0 1px #444; --header-bg: #000; --header-text: #fff; --button-bg: #fff; --button-hover-bg: #ccc; --button-text: #000; --button-radius: 2px; --card-radius: 2px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; --prompt-bg: #0d0d0d; --prompt-text: #888; --prompt-border: #1a1a1a; }
+.theme-dark-oled .card { border: 1px solid #1a1a1a; }
+
+/* =============================================
+   THEME: 13. Accessible & Ethical
+   ============================================= */
+.theme-accessible { --page-bg: #fff; background: #fff; --text-color: #1a1a1a; --heading-color: #000; --card-bg: #fff; --card-shadow: 0 0 0 2px #000; --card-hover-shadow: 0 0 0 3px #000; --header-bg: #000; --header-text: #fff; --button-bg: #0055cc; --button-hover-bg: #0044aa; --button-text: #fff; --button-radius: 4px; --card-radius: 0; --base-font: 'Atkinson Hyperlegible', 'Inter', sans-serif; --heading-font: 'Atkinson Hyperlegible', 'Inter', sans-serif; --prompt-bg: #f5f5f5; --prompt-text: #1a1a1a; }
+.theme-accessible .card { border: 2px solid #000; }
+.theme-accessible h1, .theme-accessible h2, .theme-accessible h3 { font-weight: 700; font-size: clamp(1.1rem, 3vw, 2rem); }
+
+/* =============================================
+   THEME: 14. Claymorphism
+   ============================================= */
+.theme-clay { --page-bg: #f0c9a0; background: #f0c9a0; --text-color: #7a5e3a; --heading-color: #5a3e2a; --card-bg: #f0c9a0; --card-shadow: 8px 8px 16px #d4a87a, -8px -8px 16px #ffeac6; --card-hover-shadow: 12px 12px 24px #c8986a, -12px -12px 24px #fff0d0; --header-bg: #e0b080; --header-text: #4a2e1a; --button-bg: #c89868; --button-hover-bg: #b88858; --button-text: #fff; --button-radius: 16px; --card-radius: 24px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-clay .card { border: none; }
+.theme-clay .btn { box-shadow: 4px 4px 8px #d4a87a, -4px -4px 8px #ffeac6; }
+.theme-clay h1, .theme-clay h2, .theme-clay h3 { text-shadow: 1px 1px 1px rgba(255,255,255,0.5); }
+
+/* =============================================
+   THEME: 15. Aurora UI
+   ============================================= */
+.theme-aurora { --page-bg: #0a0f1e; background: linear-gradient(135deg, #0a0f1e, #0d1528, #0a1225); --text-color: #9ab0d0; --heading-color: #c8daf0; --card-bg: rgba(20,30,55,0.6); --card-shadow: 0 4px 20px rgba(0,0,0,0.3); --card-hover-shadow: 0 6px 30px rgba(0,180,180,0.1); --header-bg: rgba(10,15,25,0.9); --header-text: #c8daf0; --button-bg: #0d9488; --button-hover-bg: #0f766e; --button-text: #fff; --button-radius: 8px; --card-radius: 12px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-aurora .card { backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); }
+
+/* =============================================
+   THEME: 16. Retro-Futurism
+   ============================================= */
+.theme-retro-future { --page-bg: #1a0a2e; background: linear-gradient(180deg, #1a0a2e, #0d1a3a); --text-color: #c0a8e0; --heading-color: #ff6b9d; --card-bg: rgba(40,20,60,0.8); --card-shadow: 0 0 20px rgba(255,100,150,0.2); --card-hover-shadow: 0 0 30px rgba(255,100,150,0.3); --header-bg: #0d0a20; --header-text: #ff6b9d; --button-bg: #ff6b9d; --button-hover-bg: #ff4b8d; --button-text: #fff; --button-radius: 4px; --card-radius: 8px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; --prompt-bg: rgba(0,0,0,0.3); }
+.theme-retro-future .card { border: 1px solid rgba(255,100,150,0.2); }
+
+/* =============================================
+   THEME: 17. Flat Design
+   ============================================= */
+.theme-flat { --page-bg: #f0f4f8; background: #f0f4f8; --text-color: #2d3748; --heading-color: #1a202c; --card-bg: #fff; --card-shadow: none; --card-hover-shadow: 0 1px 3px rgba(0,0,0,0.1); --header-bg: #3490dc; --header-text: #fff; --button-bg: #3490dc; --button-hover-bg: #2779bd; --button-text: #fff; --button-radius: 3px; --card-radius: 4px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-flat .card { border: 1px solid #e2e8f0; }
+
+/* =============================================
+   THEME: 18. Liquid Glass
+   ============================================= */
+.theme-liquid { --page-bg: #0a0e1a; background: linear-gradient(135deg, #0a0e1a, #12183a, #080c20); --text-color: #a0b8d8; --heading-color: #e0e8f8; --card-bg: rgba(255,255,255,0.03); --card-shadow: 0 8px 32px rgba(0,0,0,0.3); --card-hover-shadow: 0 12px 40px rgba(80,140,255,0.08); --header-bg: rgba(10,14,26,0.8); --header-text: #e0e8f8; --button-bg: rgba(255,255,255,0.08); --button-hover-bg: rgba(255,255,255,0.15); --button-text: #e0e8f8; --button-radius: 12px; --card-radius: 16px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-liquid .card { backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; }
+
+/* =============================================
+   THEME: 19. Motion-Driven
+   ============================================= */
+.theme-motion { --page-bg: #111; background: #111; --text-color: #ccc; --heading-color: #fff; --card-bg: #1a1a1a; --card-shadow: none; --card-hover-shadow: 0 0 0 2px #ff6b6b; --header-bg: #000; --header-text: #ff6b6b; --button-bg: #ff6b6b; --button-hover-bg: #ff4444; --button-text: #fff; --button-radius: 4px; --card-radius: 4px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-motion .card { transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1); border: 1px solid #222; }
+.theme-motion .card:hover { transform: scale(1.05) rotate(1deg); }
+
+/* =============================================
+   THEME: 20. Micro-interactions
+   ============================================= */
+.theme-micro { --page-bg: #fafafa; background: #fafafa; --text-color: #444; --heading-color: #222; --card-bg: #fff; --card-shadow: 0 2px 8px rgba(0,0,0,0.04); --card-hover-shadow: 0 8px 24px rgba(0,0,0,0.1); --header-bg: #5b6abf; --header-text: #fff; --button-bg: #5b6abf; --button-hover-bg: #4a5aaf; --button-text: #fff; --button-radius: 8px; --card-radius: 10px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-micro .card { border: 1px solid #eee; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+.theme-micro .btn { transition: all 0.2s cubic-bezier(0.4,0,0.2,1); }
+.theme-micro .btn:active { transform: scale(0.95); }
+
+/* =============================================
+   THEME: 21. Inclusive Design
+   ============================================= */
+.theme-inclusive { --page-bg: #fefefe; background: #fefefe; --text-color: #1a1a1a; --heading-color: #000; --card-bg: #fff; --card-shadow: 0 0 0 2px #000; --card-hover-shadow: 0 0 0 3px #0055cc; --header-bg: #1a3a5c; --header-text: #fff; --button-bg: #0055cc; --button-hover-bg: #003d99; --button-text: #fff; --button-radius: 6px; --card-radius: 6px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-inclusive .card { border: 2px solid #000; }
+
+/* =============================================
+   THEME: 22. Zero Interface
+   ============================================= */
+.theme-zero { --page-bg: #fff; background: #fff; --text-color: #333; --heading-color: #000; --card-bg: transparent; --card-shadow: none; --card-hover-shadow: none; --header-bg: transparent; --header-text: #000; --button-bg: transparent; --button-hover-bg: #f0f0f0; --button-text: #000; --button-radius: 0; --card-radius: 0; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-zero .card { border: none; padding: 0; }
+.theme-zero .card:hover { transform: none; }
+.theme-zero .btn { border: 1px solid #ccc; }
+
+/* =============================================
+   THEME: 23. Soft UI Evolution
+   ============================================= */
+.theme-soft-ui { --page-bg: #eef0f4; background: #eef0f4; --text-color: #4a5568; --heading-color: #2d3748; --card-bg: #f8faff; --card-shadow: 0 2px 12px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.03); --card-hover-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 0 0 1px rgba(99,130,220,0.1); --header-bg: #fff; --header-text: #2d3748; --button-bg: #6382dc; --button-hover-bg: #5472cc; --button-text: #fff; --button-radius: 10px; --card-radius: 14px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-soft-ui .card { border: 1px solid rgba(0,0,0,0.04); }
+
+/* =============================================
+   THEME: 24. Neubrutalism
+   ============================================= */
+.theme-neubrutal { --page-bg: #fffaee; background: #fffaee; --text-color: #1a1a1a; --heading-color: #000; --card-bg: #fff; --card-shadow: 4px 4px 0 #000; --card-hover-shadow: 6px 6px 0 #000; --header-bg: #ff6b6b; --header-text: #000; --button-bg: #ffd93d; --button-hover-bg: #ffc107; --button-text: #000; --button-radius: 0; --card-radius: 0; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-neubrutal .card { border: 3px solid #000; }
+
+/* =============================================
+   THEME: 25. Bento Box Grid
+   ============================================= */
+.theme-bento { --page-bg: #f5f5f7; background: #f5f5f7; --text-color: #333; --heading-color: #111; --card-bg: #fff; --card-shadow: 0 1px 3px rgba(0,0,0,0.04); --card-hover-shadow: 0 2px 8px rgba(0,0,0,0.08); --header-bg: #fff; --header-text: #1d1d1f; --button-bg: #0071e3; --button-hover-bg: #0077ed; --button-text: #fff; --button-radius: 20px; --card-radius: 18px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-bento .card { border: none; }
+.theme-bento .card-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+
+/* =============================================
+   THEME: 26. Y2K Aesthetic
+   ============================================= */
+.theme-y2k { --page-bg: #d1f7ff; background: linear-gradient(135deg, #ffccde, #c4f1f9); --text-color: #4a4a7a; --heading-color: #2a2a5a; --card-bg: rgba(255,255,255,0.4); --card-shadow: 0 0 15px rgba(255,105,180,0.2); --card-hover-shadow: 0 0 25px rgba(255,105,180,0.3); --header-bg: rgba(255,255,255,0.2); --header-text: #2a2a5a; --button-bg: #ff69b4; --button-hover-bg: #ff1493; --button-text: #fff; --button-radius: 16px; --card-radius: 12px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-y2k .card { backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.5); }
+
+/* =============================================
+   THEME: 27. Cyberpunk UI
+   ============================================= */
+.theme-cyberpunk { --page-bg: #0a0a0a; background: linear-gradient(180deg, #0a0a0a, #0d0d14); --text-color: #00ff88; --heading-color: #ff00ff; --card-bg: rgba(10,10,10,0.9); --card-shadow: 0 0 10px rgba(255,0,255,0.15), 0 0 20px rgba(0,255,136,0.05); --card-hover-shadow: 0 0 20px rgba(255,0,255,0.25), 0 0 40px rgba(0,255,136,0.1); --header-bg: #000; --header-text: #ff00ff; --button-bg: #ff00ff; --button-hover-bg: #cc00cc; --button-text: #000; --button-radius: 0; --card-radius: 0; --base-font: 'DM Mono', monospace; --heading-font: 'DM Mono', monospace; }
+.theme-cyberpunk .card { border: 1px solid #ff00ff33; }
+.theme-cyberpunk h1, .theme-cyberpunk h2 { text-shadow: 0 0 10px rgba(255,0,255,0.5); }
+
+/* =============================================
+   THEME: 28. AI-Native UI
+   ============================================= */
+.theme-ai-native { --page-bg: #fafbff; background: #fafbff; --text-color: #4a5568; --heading-color: #1a202c; --card-bg: #fff; --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px rgba(99,130,220,0.08); --card-hover-shadow: 0 4px 12px rgba(99,130,220,0.1); --header-bg: linear-gradient(90deg, #667eea, #764ba2); --header-text: #fff; --button-bg: linear-gradient(135deg, #667eea, #764ba2); --button-hover-bg: linear-gradient(135deg, #5a6fe0, #6640a0); --button-text: #fff; --button-radius: 8px; --card-radius: 12px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+
+/* =============================================
+   THEME: 29. Memphis Design
+   ============================================= */
+.theme-memphis { --page-bg: #fff5ee; background: #fff5ee; --text-color: #2a2a2a; --heading-color: #111; --card-bg: #fff; --card-shadow: 4px 4px 0 #ff6b6b; --card-hover-shadow: 6px 6px 0 #4ecdc4; --header-bg: #ff6b6b; --header-text: #fff; --button-bg: #ffe66d; --button-hover-bg: #ffd93d; --button-text: #1a1a1a; --button-radius: 20px; --card-radius: 16px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-memphis .card { border: 2px solid #111; }
+.theme-memphis .card:nth-child(odd) { border-color: #4ecdc4; }
+
+/* =============================================
+   THEME: 30. Vaporwave
+   ============================================= */
+.theme-vaporwave { --page-bg: #0a0a1a; background: linear-gradient(180deg, #0a0a2e, #1a0a3e, #2e0a4a); --text-color: #e8a0ff; --heading-color: #00ffff; --card-bg: rgba(20,10,40,0.8); --card-shadow: 0 0 15px rgba(255,0,255,0.1); --card-hover-shadow: 0 0 25px rgba(0,255,255,0.15); --header-bg: rgba(10,5,20,0.9); --header-text: #ff00ff; --button-bg: #ff00ff; --button-hover-bg: #cc00cc; --button-text: #fff; --button-radius: 4px; --card-radius: 6px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-vaporwave .card { border: 1px solid rgba(255,0,255,0.2); }
+
+/* =============================================
+   THEME: 31. Dimensional Layering
+   ============================================= */
+.theme-dimensional { --page-bg: #f0f0f5; background: #f0f0f5; --text-color: #3a3a4a; --heading-color: #1a1a2a; --card-bg: #fff; --card-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.03), 0 4px 8px rgba(0,0,0,0.03); --card-hover-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.04), 0 8px 16px rgba(0,0,0,0.06); --header-bg: #fff; --header-text: #1a1a2a; --button-bg: #4a4a6a; --button-hover-bg: #3a3a5a; --button-text: #fff; --button-radius: 6px; --card-radius: 10px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-dimensional .card { border: 1px solid #eee; }
+
+/* =============================================
+   THEME: 32. Exaggerated Minimalism
+   ============================================= */
+.theme-ex-minimal { --page-bg: #fff; background: #fff; --text-color: #1a1a1a; --heading-color: #000; --card-bg: #fff; --card-shadow: none; --card-hover-shadow: none; --header-bg: #fff; --header-text: #000; --button-bg: #000; --button-hover-bg: #333; --button-text: #fff; --button-radius: 0; --card-radius: 0; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-ex-minimal .card { border: none; border-top: 1px solid #eee; }
+.theme-ex-minimal .card:hover { transform: none; }
+.theme-ex-minimal h1 { font-size: 5rem; font-weight: 900; letter-spacing: -0.05em; }
+
+/* =============================================
+   THEME: 33. Kinetic Typography
+   ============================================= */
+.theme-kinetic { --page-bg: #000; background: #000; --text-color: #ccc; --heading-color: #fff; --card-bg: #0a0a0a; --card-shadow: none; --card-hover-shadow: none; --header-bg: #000; --header-text: #fff; --button-bg: #fff; --button-hover-bg: #ccc; --button-text: #000; --button-radius: 0; --card-radius: 0; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-kinetic .card { border: 1px solid #222; }
+.theme-kinetic h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; line-height: 0.9; }
+
+/* =============================================
+   THEME: 34. Parallax Storytelling
+   ============================================= */
+.theme-parallax { --page-bg: #f5f0e8; background: linear-gradient(180deg, #f5f0e8, #e8e0d0, #f0e8d8); --text-color: #3a3028; --heading-color: #1a1008; --card-bg: rgba(255,255,255,0.7); --card-shadow: 0 4px 20px rgba(0,0,0,0.06); --card-hover-shadow: 0 8px 30px rgba(0,0,0,0.1); --header-bg: #1a1008; --header-text: #f5f0e8; --button-bg: #8b6f47; --button-hover-bg: #6b4f27; --button-text: #fff; --button-radius: 4px; --card-radius: 10px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+
+/* =============================================
+   THEME: 35. Swiss Modernism 2.0
+   ============================================= */
+.theme-swiss-2 { --page-bg: #fcfcfc; background: #fcfcfc; --text-color: #1a1a1a; --heading-color: #000; --card-bg: #fff; --card-shadow: none; --card-hover-shadow: 0 1px 4px rgba(0,0,0,0.06); --header-bg: #fff; --header-text: #000; --button-bg: #000; --button-hover-bg: #333; --button-text: #fff; --button-radius: 0; --card-radius: 0; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-swiss-2 .card { border: 1px solid #000; border-width: 2px 0 0 0; padding-top: 2rem; }
+.theme-swiss-2 h1 { font-size: 4rem; font-weight: 900; line-height: 0.85; }
+
+/* =============================================
+   THEME: 36. HUD / Sci-Fi FUI
+   ============================================= */
+.theme-hud { --page-bg: #001020; background: #001020; --text-color: #00aaff; --heading-color: #00ccff; --card-bg: rgba(0,20,40,0.8); --card-shadow: 0 0 0 1px rgba(0,170,255,0.2); --card-hover-shadow: 0 0 0 1px rgba(0,170,255,0.4), 0 0 10px rgba(0,170,255,0.1); --header-bg: rgba(0,10,20,0.9); --header-text: #00ccff; --button-bg: transparent; --button-hover-bg: rgba(0,170,255,0.1); --button-text: #00aaff; --button-radius: 0; --card-radius: 0; --base-font: 'DM Mono', monospace; --heading-font: 'DM Mono', monospace; --prompt-bg: rgba(0,30,50,0.8); --prompt-text: #0088cc; --prompt-border: rgba(0,170,255,0.2); }
+.theme-hud .card { border: 1px solid rgba(0,170,255,0.15); }
+.theme-hud .btn { border: 1px solid rgba(0,170,255,0.3); }
+
+/* =============================================
+   THEME: 37. Bento Grids
+   ============================================= */
+.theme-bento-2 { --page-bg: #f2f2f7; background: #f2f2f7; --text-color: #333; --heading-color: #111; --card-bg: #fff; --card-shadow: none; --card-hover-shadow: 0 2px 12px rgba(0,0,0,0.06); --header-bg: #fff; --header-text: #111; --button-bg: #ff3b30; --button-hover-bg: #e0352b; --button-text: #fff; --button-radius: 14px; --card-radius: 20px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-bento-2 .card { border: none; }
+
+/* =============================================
+   THEME: 38. Spatial UI (VisionOS)
+   ============================================= */
+.theme-spatial { --page-bg: #1a1a2e; background: linear-gradient(135deg, #1a1a2e, #16213e, #1a1a2e); --text-color: #c0c8d8; --heading-color: #e8eef8; --card-bg: rgba(255,255,255,0.08); --card-shadow: 0 0 0 1px rgba(255,255,255,0.08); --card-hover-shadow: 0 0 0 1px rgba(255,255,255,0.12); --header-bg: rgba(20,20,40,0.9); --header-text: #e8eef8; --button-bg: rgba(100,140,255,0.12); --button-hover-bg: rgba(100,140,255,0.25); --button-text: #a0c0ff; --button-radius: 20px; --card-radius: 22px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-spatial .card { backdrop-filter: blur(20px); }
+.theme-spatial .btn { border: 1px solid rgba(255,255,255,0.1); }
+
+/* =============================================
+   THEME: 39. E-Ink / Paper
+   ============================================= */
+.theme-eink { --page-bg: #faf8f0; background: #faf8f0; --text-color: #3a3a30; --heading-color: #1a1a10; --card-bg: #faf8f0; --card-shadow: 0 0 0 1px rgba(0,0,0,0.06); --card-hover-shadow: 0 0 0 1px rgba(0,0,0,0.12); --header-bg: #f0ede0; --header-text: #1a1a10; --button-bg: #3a3a30; --button-hover-bg: #5a5a50; --button-text: #faf8f0; --button-radius: 2px; --card-radius: 0; --base-font: 'Georgia', 'Noto Serif SC', serif; --heading-font: 'Georgia', 'Noto Serif SC', serif; }
+.theme-eink .card { border: none; border-bottom: 1px solid #ddd8c8; }
+.theme-eink body { font-size: 16px; line-height: 1.8; }
+
+/* =============================================
+   THEME: 40. Gen Z Chaos / Maximalism
+   ============================================= */
+.theme-genz { --page-bg: #fff; background: #fff; --text-color: #1a1a1a; --heading-color: #ff4500; --card-bg: #fffa00; --card-shadow: 3px 3px 0 #ff4500; --card-hover-shadow: 5px 5px 0 #ff4500; --header-bg: #000; --header-text: #fffa00; --button-bg: #ff4500; --button-hover-bg: #cc3700; --button-text: #fff; --button-radius: 30px; --card-radius: 0; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-genz .card { border: 2px solid #000; }
+
+/* =============================================
+   THEME: 41. Biomimetic / Organic 2.0
+   ============================================= */
+.theme-biomimetic { --page-bg: #e8ede4; background: linear-gradient(180deg, #e8ede4, #dce3d8); --text-color: #3a4a3a; --heading-color: #1a2a1a; --card-bg: rgba(255,255,255,0.5); --card-shadow: 0 2px 12px rgba(0,30,0,0.04); --card-hover-shadow: 0 4px 20px rgba(0,30,0,0.08); --header-bg: #2a4a2a; --header-text: #e0ede0; --button-bg: #4a7a4a; --button-hover-bg: #3a6a3a; --button-text: #fff; --button-radius: 20px; --card-radius: 18px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+
+/* =============================================
+   THEME: 42. Anti-Polish / Raw Aesthetic
+   ============================================= */
+.theme-raw { --page-bg: #fdfdfd; background: #fdfdfd; --text-color: #111; --heading-color: #000; --card-bg: #fff; --card-shadow: none; --card-hover-shadow: none; --header-bg: #fff; --header-text: #000; --button-bg: #fff; --button-hover-bg: #eee; --button-text: #000; --button-radius: 0; --card-radius: 0; --base-font: 'DM Mono', monospace; --heading-font: 'DM Mono', monospace; }
+.theme-raw .card { border: 1px solid #ddd; border-style: dashed; }
+.theme-raw .card:hover { transform: none; }
+
+/* =============================================
+   THEME: 43. Tactile Digital / Deformable UI
+   ============================================= */
+.theme-tactile { --page-bg: #f8f5f0; background: #f8f5f0; --text-color: #4a4a40; --heading-color: #2a2a20; --card-bg: #fff; --card-shadow: 0 2px 0 #e0ddd8, 0 4px 8px rgba(0,0,0,0.04); --card-hover-shadow: 0 2px 0 #c8c5c0, 0 6px 16px rgba(0,0,0,0.08); --header-bg: #4a4a3a; --header-text: #f5f2ea; --button-bg: #4a4a3a; --button-hover-bg: #3a3a2a; --button-text: #f5f2ea; --button-radius: 6px; --card-radius: 10px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-tactile .card { border: 1px solid #e0ddd8; }
+.theme-tactile .card:active { transform: scale(0.98); }
+
+/* =============================================
+   THEME: 44. Nature Distilled
+   ============================================= */
+.theme-nature-d { --page-bg: #f5f2eb; background: #f5f2eb; --text-color: #4a4438; --heading-color: #2a2418; --card-bg: #fcfaf5; --card-shadow: 0 1px 4px rgba(0,0,0,0.03); --card-hover-shadow: 0 2px 10px rgba(0,0,0,0.06); --header-bg: #5a6a4a; --header-text: #f0f0e8; --button-bg: #6a7a5a; --button-hover-bg: #5a6a4a; --button-text: #fff; --button-radius: 6px; --card-radius: 8px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+
+/* =============================================
+   THEME: 45. Interactive Cursor Design
+   ============================================= */
+.theme-cursor { --page-bg: #1a1a2e; background: #1a1a2e; --text-color: #a0a0c0; --heading-color: #ddd; --card-bg: #222240; --card-shadow: 0 0 20px rgba(0,0,0,0.3); --card-hover-shadow: 0 0 30px rgba(100,100,200,0.1); --header-bg: #111128; --header-text: #ddd; --button-bg: #334; --button-hover-bg: #445; --button-text: #ddd; --button-radius: 6px; --card-radius: 10px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-cursor .card { border: 1px solid rgba(255,255,255,0.05); cursor: crosshair; }
+
+/* =============================================
+   THEME: 46. Voice-First Multimodal
+   ============================================= */
+.theme-voice { --page-bg: #0a0a1a; background: #0a0a1a; --text-color: #8890aa; --heading-color: #ccd0ee; --card-bg: rgba(20,20,40,0.8); --card-shadow: 0 0 0 1px rgba(255,255,255,0.04); --card-hover-shadow: 0 0 0 1px rgba(100,150,255,0.1); --header-bg: rgba(10,10,20,0.9); --header-text: #ccd0ee; --button-bg: rgba(100,150,255,0.1); --button-hover-bg: rgba(100,150,255,0.2); --button-text: #aabbee; --button-radius: 20px; --card-radius: 12px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-voice .card { border: 1px solid rgba(255,255,255,0.04); border-radius: 16px; }
+
+/* =============================================
+   THEME: 47. 3D Product Preview
+   ============================================= */
+.theme-3d-product { --page-bg: #fafafa; background: #fafafa; --text-color: #2a2a2a; --heading-color: #111; --card-bg: #fff; --card-shadow: 0 8px 30px rgba(0,0,0,0.08); --card-hover-shadow: 0 12px 40px rgba(0,0,0,0.12); --header-bg: #fff; --header-text: #111; --button-bg: #111; --button-hover-bg: #333; --button-text: #fff; --button-radius: 4px; --card-radius: 12px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+
+/* =============================================
+   THEME: 48. Gradient Mesh / Aurora Evolved
+   ============================================= */
+.theme-gradient-mesh { --page-bg: #0a0e1a; background: radial-gradient(circle at 20% 30%, rgba(255,100,200,0.15), transparent 40%), radial-gradient(circle at 80% 70%, rgba(0,200,255,0.12), transparent 40%), #0a0e1a; --text-color: #a0b8d0; --heading-color: #e0e8f8; --card-bg: rgba(255,255,255,0.04); --card-shadow: 0 4px 20px rgba(0,0,0,0.2); --card-hover-shadow: 0 6px 30px rgba(100,180,255,0.1); --header-bg: rgba(10,14,20,0.9); --header-text: #e0e8f8; --button-bg: rgba(255,255,255,0.1); --button-hover-bg: rgba(255,255,255,0.2); --button-text: #e0e8f8; --button-radius: 8px; --card-radius: 12px; --base-font: 'Inter', sans-serif; --heading-font: 'Inter', sans-serif; }
+.theme-gradient-mesh .card { backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.06); }
+
+/* =============================================
+   THEME: 49. Chromatic Aberration / RGB Split
+   ============================================= */
+.theme-chromatic { --page-bg: #000; background: #000; --text-color: #ccc; --heading-color: #fff; --card-bg: #0a0a0a; --card-shadow: 0 0 0 1px rgba(255,0,0,0.1), 0 0 0 2px rgba(0,255,0,0.1), 0 0 0 3px rgba(0,0,255,0.1); --card-hover-shadow: 0 0 0 2px rgba(255,0,0,0.2), 0 0 0 4px rgba(0,255,0,0.2), 0 0 0 6px rgba(0,0,255,0.2); --header-bg: #000; --header-text: #fff; --button-bg: #fff; --button-hover-bg: #ccc; --button-text: #000; --button-radius: 0; --card-radius: 0; --base-font: 'DM Mono', monospace; --heading-font: 'DM Mono', monospace; }
+.theme-chromatic .card { border: 1px solid #222; }
+.theme-chromatic h1 { text-shadow: 2px 0 0 rgba(255,0,0,0.5), -2px 0 0 rgba(0,0,255,0.5); }
+
+/* =============================================
+   THEME: 50. Vintage Analog / Retro Film
+   ============================================= */
+.theme-vintage-film { --page-bg: #f5e8d0; background: #f5e8d0; --text-color: #4a3a20; --heading-color: #2a1a08; --card-bg: #faf0dd; --card-shadow: 0 2px 8px rgba(80,50,20,0.08); --card-hover-shadow: 0 4px 16px rgba(80,50,20,0.12); --header-bg: #3a2a10; --header-text: #f5e8d0; --button-bg: #8b6914; --button-hover-bg: #6b4a08; --button-text: #fff; --button-radius: 2px; --card-radius: 4px; --base-font: 'Georgia', 'Times New Roman', serif; --heading-font: 'Georgia', 'Times New Roman', serif; }
+.theme-vintage-film .card { border: 1px solid #d4c4a0; }
+.theme-vintage-film body { font-size: 16px; line-height: 1.7; }

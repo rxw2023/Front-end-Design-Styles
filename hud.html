@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>科幻HUD — HUD / Sci-Fi FUI</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;min-height:100vh;transition:background .3s,color .3s}.back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.1em;padding:2rem 0 0 2rem;opacity:.5;color:var(--text-color)}.back:hover{opacity:1}.container{max-width:1200px;margin:0 auto;padding:2rem}.label{font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.2em;margin-bottom:.5rem;opacity:.5;color:var(--text-color)}h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;margin-bottom:.3rem;color:var(--heading-color)}.sub{font-size:.85rem;margin-bottom:2rem;font-family:DM Mono,monospace;opacity:.4;color:var(--text-color)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--card-radius,10px);padding:1.5rem;box-shadow:var(--card-shadow);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:var(--card-hover-shadow)}.card .num{font-family:DM Mono,monospace;font-size:.65rem;opacity:.3;letter-spacing:.15em;margin-bottom:.5rem}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--heading-color)}.card p{font-size:.82rem;line-height:1.7;color:var(--text-color);opacity:.7}.palette{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}.palette .c{width:40px;height:40px;border-radius:8px;border:1px solid var(--border-color);box-shadow:var(--card-shadow)}</style></head>
+<body class="theme-hud">
+<a href="index.html" id="backLink" class="back">&#8592; 返回首页</a>
+<div class="container">
+<div class="label">— 36 · HUD / SCI-FI FUI</div>
+<h1>科幻HUD</h1>
+<div class="sub">全息投影 · 发光青色 · 科幻电影感</div>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3>深空蓝底</h3><p>#001020极其深邃的蓝色，模拟科幻电影中太空飞船控制台的背景。</p></div>
+<div class="card"><div class="num">02</div><h3>发光青色边框</h3><p>卡片使用青色半透明边框，hover时增强辉光，模拟全息投影。</p></div>
+<div class="card"><div class="num">03</div><h3>等宽数据字体</h3><p>DM Mono等宽字体配合科技蓝文字，信息显示如飞船电脑数据流。</p></div>
+<div class="card"><div class="num">04</div><h3>透明按钮</h3><p>按钮透明背景+青色边框，hover时出现青色半透明底色如触控全息面板。</p></div>
+<div class="card"><div class="num">05</div><h3>数据面板质感</h3><p>暗色半透明卡片+青色细线框，像全息投影勾勒出的数据面板。</p></div>
+<div class="card"><div class="num">06</div><h3>科幻FUI传统</h3><p>从《钢铁侠》到《星际迷航》——这种风格是科幻影视中未来界面的视觉语言。</p></div>
+</div>
+<div class="palette"><div class="c" style="background:#001020" title="#001020"></div><div class="c" style="background:#00aaff" title="#00aaff"></div><div class="c" style="background:#00ccff" title="#00ccff"></div><div class="c" style="background:#000" title="#000"></div><div class="c" style="background:#003050" title="#003050"></div></div>
+</div>
+
+<script>
+(function(){
+  var p=new URLSearchParams(location.search).get('from');
+  var link=document.getElementById('backLink');
+  if(p) link.href='index.html?page='+p;
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

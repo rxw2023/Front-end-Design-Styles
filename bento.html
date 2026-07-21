@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>便当盒网格 — Bento Box Grid</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;min-height:100vh;transition:background .3s,color .3s}.back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.1em;padding:2rem 0 0 2rem;opacity:.5;color:var(--text-color)}.back:hover{opacity:1}.container{max-width:1200px;margin:0 auto;padding:2rem}.label{font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.2em;margin-bottom:.5rem;opacity:.5;color:var(--text-color)}h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;margin-bottom:.3rem;color:var(--heading-color)}.sub{font-size:.85rem;margin-bottom:2rem;font-family:DM Mono,monospace;opacity:.4;color:var(--text-color)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--card-radius,10px);padding:1.5rem;box-shadow:var(--card-shadow);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:var(--card-hover-shadow)}.card .num{font-family:DM Mono,monospace;font-size:.65rem;opacity:.3;letter-spacing:.15em;margin-bottom:.5rem}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--heading-color)}.card p{font-size:.82rem;line-height:1.7;color:var(--text-color);opacity:.7}.palette{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}.palette .c{width:40px;height:40px;border-radius:8px;border:1px solid var(--border-color);box-shadow:var(--card-shadow)}</style></head>
+<body class="theme-bento">
+<a href="index.html" id="backLink" class="back">&#8592; 返回首页</a>
+<div class="container">
+<div class="label">— 25 · BENTO BOX GRID</div>
+<h1>便当盒网格</h1>
+<div class="sub">不等大卡片 · Apple风格 · 圆角拼贴</div>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3>Apple灰色调</h3><p>#f5f5f7经典Apple官网底色，白色卡片像精致的便当盒分隔。</p></div>
+<div class="card"><div class="num">02</div><h3>不等大卡片</h3><p>card-grid可设计为不规则span，模拟便当盒中大小不一的格子。</p></div>
+<div class="card"><div class="num">03</div><h3>20px胶囊按钮</h3><p>按钮圆角20px形成药丸形状，是Apple生态的标志性按钮风格。</p></div>
+<div class="card"><div class="num">04</div><h3>18px大圆角</h3><p>border-radius: 18px让卡片边缘圆润柔和，与胶囊按钮的圆角语言统一。</p></div>
+<div class="card"><div class="num">05</div><h3>无边框设计</h3><p>完全依赖微弱的box-shadow和圆角来定义卡片边界，简洁到极致。</p></div>
+<div class="card"><div class="num">06</div><h3>产品展示优化</h3><p>特别适合产品特性展示——每个格子介绍一个功能。</p></div>
+</div>
+<div class="palette"><div class="c" style="background:#f5f5f7" title="#f5f5f7"></div><div class="c" style="background:#0071e3" title="#0071e3"></div><div class="c" style="background:#fff" title="#fff"></div><div class="c" style="background:#1d1d1f" title="#1d1d1f"></div><div class="c" style="background:#333" title="#333"></div></div>
+</div>
+
+<script>
+(function(){
+  var p=new URLSearchParams(location.search).get('from');
+  var link=document.getElementById('backLink');
+  if(p) link.href='index.html?page='+p;
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

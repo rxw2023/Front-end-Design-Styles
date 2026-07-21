@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新拟物化 — Neumorphism</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #e0e5ec; color: #5a6575; min-height: 100vh; }
+.back { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #8a95a5; opacity: 0.5; padding: 2rem 0 0 2rem; }
+.back:hover { opacity: 1; }
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: #8a95a5; opacity: 1; margin-bottom: 0.5rem; }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: #3a4a5a; margin-bottom: 0.3rem; }
+.sub { font-size: 0.75rem; font-family: 'DM Mono', monospace; margin-bottom: 2rem; color: #8a95a5; opacity: 0.5; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+.card { background: #e0e5ec; border-radius: 20px; padding: 1.8rem; box-shadow: 8px 8px 16px #c2c8d2, -8px -8px 16px #fefeff; transition: all 0.3s; border: none; }
+.card:hover { box-shadow: 12px 12px 24px #b8bec8, -12px -12px 24px #fff; }
+.card .num { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #b0b8c5; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+.card h3 { font-size: 1.15rem; font-weight: 700; color: #3a4a5a; margin-bottom: 0.6rem; }
+.card p { font-size: 0.82rem; color: #7a8595; line-height: 1.7; }
+.card.featured { grid-column: 1 / -1; display: flex; gap: 2rem; align-items: center; padding: 2.5rem; }
+.card.featured .tag { display: inline-flex; padding: 0.5rem 1.2rem; border-radius: 14px; box-shadow: 4px 4px 8px #c2c8d2, -4px -4px 8px #fefeff; font-size: 0.75rem; color: #5a6575; margin-bottom: 1rem; font-weight: 600; }
+.card.featured .tag.pressed { box-shadow: inset 4px 4px 8px #c2c8d2, inset -4px -4px 8px #fefeff; }
+.card.featured h3 { font-size: 1.4rem; }
+.pressed-area { background: #eef0f5; border-radius: 16px; padding: 1.5rem; margin-top: 2rem; box-shadow: inset 6px 6px 12px #c2c8d2, inset -6px -6px 12px #fefeff; }
+.pressed-area h3 { font-size: 0.9rem; color: #6c8aaf; }
+.pressed-area p { font-size: 0.78rem; color: #8a95a5; margin-top: 0.4rem; }
+@media (max-width:768px) { .card.featured { flex-direction: column; } }
+</style>
+</head>
+<body>
+
+<a href="#" id="backLink" class="back">← 返回首页</a>
+
+<div class="container">
+    <div class="label">— 08 · NEUMORPHISM</div>
+    <h1>新拟物化</h1>
+    <div class="sub">对向阴影 · 同色背景 · 20px圆角 · inset凹陷态</div>
+
+    <div class="grid">
+        <div class="card"><div class="num">SOFT 01</div><h3>柔和阴影系统</h3><p>两组对向box-shadow（暗色右下+亮色左上）让卡片产生从背景中浮起的浮雕错觉。</p></div>
+        <div class="card"><div class="num">SOFT 02</div><h3>与背景同色</h3><p>卡片与背景使用完全相同的#e0e5ec，取消边框，仅靠光影区分层次。</p></div>
+        <div class="card"><div class="num">SOFT 03</div><h3>按下凹陷效果</h3><p>active状态将box-shadow替换为inset内阴影，模拟按钮被按入背景的物理反馈。</p></div>
+        <div class="card"><div class="num">SOFT 04</div><h3>大圆角柔和</h3><p>border-radius: 20px让光影过渡更自然，整体气质更柔和亲切。</p></div>
+        <div class="card"><div class="num">SOFT 05</div><h3>低对比度配色</h3><p>整体控制在灰蓝调低饱和范围，避免视觉刺激，营造安静专注的阅读氛围。</p></div>
+        <div class="card"><div class="num">SOFT 06</div><h3>无硬边界</h3><p>去除所有border和硬分割线，完全依赖光影关系来定义元素边界和层级。</p></div>
+    </div>
+
+    <div class="card featured">
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <span class="tag">按钮常态</span>
+            <span class="tag pressed">按钮按下</span>
+        </div>
+        <div><h3>对比演示：浮起态 vs 按下态</h3><p>左边凸起按钮（box-shadow向外），右边凹陷按钮（inset内阴影）——新拟物化的核心就是这两种状态的交替使用。</p></div>
+    </div>
+
+    <div class="pressed-area">
+        <h3>内凹内容区 (Inset Area)</h3>
+        <p>这个区域使用inset box-shadow模拟被压入背景的凹槽，适合做输入框、代码块、信息展示等需要"嵌入"感的内容区。</p>
+    </div>
+</div>
+
+<script>
+var p=new URLSearchParams(location.search).get('from');
+document.getElementById('backLink').href=p?'index.html?page='+p:'index.html';
+</script>
+</body>
+</html>

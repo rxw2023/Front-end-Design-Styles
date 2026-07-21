@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>粘土风 — Claymorphism</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;min-height:100vh;transition:background .3s,color .3s}.back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.1em;padding:2rem 0 0 2rem;opacity:.5;color:var(--text-color)}.back:hover{opacity:1}.container{max-width:1200px;margin:0 auto;padding:2rem}.label{font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.2em;margin-bottom:.5rem;opacity:.5;color:var(--text-color)}h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;margin-bottom:.3rem;color:var(--heading-color)}.sub{font-size:.85rem;margin-bottom:2rem;font-family:DM Mono,monospace;opacity:.4;color:var(--text-color)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--card-radius,10px);padding:1.5rem;box-shadow:var(--card-shadow);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:var(--card-hover-shadow)}.card .num{font-family:DM Mono,monospace;font-size:.65rem;opacity:.3;letter-spacing:.15em;margin-bottom:.5rem}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--heading-color)}.card p{font-size:.82rem;line-height:1.7;color:var(--text-color);opacity:.7}.palette{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}.palette .c{width:40px;height:40px;border-radius:8px;border:1px solid var(--border-color);box-shadow:var(--card-shadow)}</style></head>
+<body class="theme-clay">
+<a href="index.html" id="backLink" class="back">&#8592; 返回首页</a>
+<div class="container">
+<div class="label">— 14 · CLAYMORPHISM</div>
+<h1>粘土风</h1>
+<div class="sub">柔软3D · 暖泥土色 · 大圆角</div>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3>内外阴影</h3><p>两组对向box-shadow创造柔软凸起，像粘土被从底部照亮。</p></div>
+<div class="card"><div class="num">02</div><h3>同色背景融合</h3><p>卡片颜色与页面背景完全相同，无边框，仅靠光影区分层次。</p></div>
+<div class="card"><div class="num">03</div><h3>超大圆角</h3><p>border-radius: 24px让元素边缘如被揉圆的粘土块，无任何锐利转角。</p></div>
+<div class="card"><div class="num">04</div><h3>暖泥土色调</h3><p>从暖杏色到深可可色，全色谱控制在温暖的大地色域内。</p></div>
+<div class="card"><div class="num">05</div><h3>内凹凹陷态</h3><p>按钮active时使用inset内阴影，模拟手指按入粘土的物理凹陷感。</p></div>
+<div class="card"><div class="num">06</div><h3>文字浮雕</h3><p>标题使用text-shadow白光投影，让文字也产生轻微浮起效果。</p></div>
+</div>
+<div class="palette"><div class="c" style="background:#f0c9a0" title="#f0c9a0"></div><div class="c" style="background:#e0b080" title="#e0b080"></div><div class="c" style="background:#7a5e3a" title="#7a5e3a"></div><div class="c" style="background:#c89868" title="#c89868"></div><div class="c" style="background:#5a3e2a" title="#5a3e2a"></div></div>
+</div>
+
+<script>
+(function(){
+  var p=new URLSearchParams(location.search).get('from');
+  var link=document.getElementById('backLink');
+  if(p) link.href='index.html?page='+p;
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

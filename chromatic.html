@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>色差RGB分裂 — Chromatic Aberration / RGB Split</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;min-height:100vh;transition:background .3s,color .3s}.back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.1em;padding:2rem 0 0 2rem;opacity:.5;color:var(--text-color)}.back:hover{opacity:1}.container{max-width:1200px;margin:0 auto;padding:2rem}.label{font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.2em;margin-bottom:.5rem;opacity:.5;color:var(--text-color)}h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;margin-bottom:.3rem;color:var(--heading-color)}.sub{font-size:.85rem;margin-bottom:2rem;font-family:DM Mono,monospace;opacity:.4;color:var(--text-color)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--card-radius,10px);padding:1.5rem;box-shadow:var(--card-shadow);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:var(--card-hover-shadow)}.card .num{font-family:DM Mono,monospace;font-size:.65rem;opacity:.3;letter-spacing:.15em;margin-bottom:.5rem}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--heading-color)}.card p{font-size:.82rem;line-height:1.7;color:var(--text-color);opacity:.7}.palette{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}.palette .c{width:40px;height:40px;border-radius:8px;border:1px solid var(--border-color);box-shadow:var(--card-shadow)}</style></head>
+<body class="theme-chromatic">
+<a href="index.html" id="backLink" class="back">&#8592; 返回首页</a>
+<div class="container">
+<div class="label">— 49 · CHROMATIC ABERRATION / RGB SPLIT</div>
+<h1>色差RGB分裂</h1>
+<div class="sub">三色分离 · 故障美学 · 色散效果</div>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3>三色分离边框</h3><p>三个重叠box-shadow模拟RGB通道分离：红1px、绿2px、蓝3px。</p></div>
+<div class="card"><div class="num">02</div><h3>RGB文字色散</h3><p>h1使用text-shadow: 2px 0 red, -2px 0 blue——红蓝通道相反方向偏移。</p></div>
+<div class="card"><div class="num">03</div><h3>纯黑底色</h3><p>#000纯黑背景——色彩分离在黑色上最明显，像影院屏幕边缘的RGB像素。</p></div>
+<div class="card"><div class="num">04</div><h3>等宽终端字体</h3><p>DM Mono等宽字体配合色散效果，产生数据损坏/glitch的质感。</p></div>
+<div class="card"><div class="num">05</div><h3>hover色彩跳动</h3><p>三色边框从1/2/3px跳到2/4/6px——交互本身制造'故障'。</p></div>
+<div class="card"><div class="num">06</div><h3>Chromatic Aberration</h3><p>原是摄影光学的缺陷，在设计中成为刻意的不完美美学。</p></div>
+</div>
+<div class="palette"><div class="c" style="background:#000" title="#000"></div><div class="c" style="background:#ff0000" title="#ff0000"></div><div class="c" style="background:#00ff00" title="#00ff00"></div><div class="c" style="background:#0000ff" title="#0000ff"></div><div class="c" style="background:#fff" title="#fff"></div></div>
+</div>
+
+<script>
+(function(){
+  var p=new URLSearchParams(location.search).get('from');
+  var link=document.getElementById('backLink');
+  if(p) link.href='index.html?page='+p;
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

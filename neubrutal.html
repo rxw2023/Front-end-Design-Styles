@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新粗野2.0 — Neubrutalism</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;min-height:100vh;transition:background .3s,color .3s}.back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.1em;padding:2rem 0 0 2rem;opacity:.5;color:var(--text-color)}.back:hover{opacity:1}.container{max-width:1200px;margin:0 auto;padding:2rem}.label{font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.2em;margin-bottom:.5rem;opacity:.5;color:var(--text-color)}h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;margin-bottom:.3rem;color:var(--heading-color)}.sub{font-size:.85rem;margin-bottom:2rem;font-family:DM Mono,monospace;opacity:.4;color:var(--text-color)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--card-radius,10px);padding:1.5rem;box-shadow:var(--card-shadow);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:var(--card-hover-shadow)}.card .num{font-family:DM Mono,monospace;font-size:.65rem;opacity:.3;letter-spacing:.15em;margin-bottom:.5rem}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--heading-color)}.card p{font-size:.82rem;line-height:1.7;color:var(--text-color);opacity:.7}.palette{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}.palette .c{width:40px;height:40px;border-radius:8px;border:1px solid var(--border-color);box-shadow:var(--card-shadow)}</style></head>
+<body class="theme-neubrutal">
+<a href="index.html" id="backLink" class="back">&#8592; 返回首页</a>
+<div class="container">
+<div class="label">— 24 · NEUBRUTALISM</div>
+<h1>新粗野2.0</h1>
+<div class="sub">亮色乐观 · 硬阴影 · Gen Z友好</div>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3>暖色奶油底</h3><p>#fffaee替代传统灰白，给硬朗的边框阴影带来温暖和可接近感。</p></div>
+<div class="card"><div class="num">02</div><h3>弹出色彩</h3><p>#ff6b6b暖红+#ffd93d亮黄撞色，活跃乐观，Gen Z友好版粗野主义。</p></div>
+<div class="card"><div class="num">03</div><h3>硬阴影偏移</h3><p>box-shadow: 4px 4px 0 #000，不模糊的纯黑阴影产生强烈的物理偏移。</p></div>
+<div class="card"><div class="num">04</div><h3>3px粗黑边框</h3><p>border: 3px solid #000，比1-2px更粗犷，与硬阴影形成统一语言。</p></div>
+<div class="card"><div class="num">05</div><h3>零圆角</h3><p>border-radius: 0，锐利直角与亮色搭配形成严肃但有趣的矛盾张力。</p></div>
+<div class="card"><div class="num">06</div><h3>Figma风格</h3><p>在Figma设计社区极受欢迎——可识别性强、大胆、有态度。</p></div>
+</div>
+<div class="palette"><div class="c" style="background:#fffaee" title="#fffaee"></div><div class="c" style="background:#ff6b6b" title="#ff6b6b"></div><div class="c" style="background:#ffd93d" title="#ffd93d"></div><div class="c" style="background:#000" title="#000"></div><div class="c" style="background:#fff" title="#fff"></div></div>
+</div>
+
+<script>
+(function(){
+  var p=new URLSearchParams(location.search).get('from');
+  var link=document.getElementById('backLink');
+  if(p) link.href='index.html?page='+p;
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

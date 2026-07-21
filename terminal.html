@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>终端/CLI 审美 — Terminal Aesthetic</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Mono', monospace; background: #0d0f0e; color: #c5d0c0; min-height: 100vh; }
+.back { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; font-size: 0.7rem; letter-spacing: 0.1em; color: #5a6b5e; opacity: 0.5; padding: 2rem 0 0 2rem; }
+.back:hover { opacity: 1; }
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: #5a6b5e; opacity: 1; margin-bottom: 0.5rem; }
+h1 { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 400; color: #dfff00; margin-bottom: 0.3rem; }
+.sub { font-size: 0.75rem; margin-bottom: 2rem; font-family: 'DM Mono', monospace; opacity: 0.6; color: #5a6b5e; }
+.status-bar { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1rem; background: #151716; border: 1px solid #2a302c; margin-bottom: 2rem; font-size: 0.75rem; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ec97a; box-shadow: 0 0 6px rgba(78,201,122,0.5); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 6px rgba(78,201,122,0.5)} 50%{opacity:0.4;box-shadow:0 0 14px rgba(78,201,122,0.8)} }
+.status-text { color: #4ec97a; }
+.status-meta { color: #5a6b5e; }
+.t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: #2a302c; }
+.card { background: #0d0f0e; padding: 1.25rem; border: 1px solid #2a302c; }
+.card .prompt { color: #5a6b5e; font-size: 0.7rem; }
+.card .prompt span { color: #4ec97a; }
+.card h3 { font-size: 1rem; font-weight: 400; color: #e8f0e0; margin: 0.5rem 0; }
+.card p { font-size: 0.7rem; color: #5a6b5e; line-height: 1.6; }
+.card .meta-line { font-size: 0.65rem; color: #3a4a3e; margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #1e2420; }
+</style>
+</head>
+<body>
+
+<a href="#" id="backLink" class="back">← 返回首页</a>
+
+<div class="container">
+    <div class="label">— 04 · TERMINAL / CLI AESTHETIC</div>
+    <h1>终端 / CLI 审美</h1>
+    <div class="sub">绿色脉冲 · 等宽全文本 · 冷工业配色 · 命令行审美</div>
+    <div class="status-bar">
+        <span class="status-dot"></span><span class="status-text">Node online</span><span class="status-meta">| Experimental Archive v0.4.2 | 运行中</span><span style="flex:1;"></span><span class="status-meta">PID 4219 · 内存 64MB</span>
+    </div>
+    <div class="t-grid">
+        <div class="card"><div class="prompt"><span>◆</span> ~/styles $ cat status</div><h3>状态指示器</h3><p>绿色脉冲圆点 + "Node online" 文本，模拟服务运行状态显示。终端风格的核心视觉符号。</p><div class="meta-line"># status · 实时监控</div></div>
+        <div class="card"><div class="prompt"><span>◆</span> ~/styles $ cat hierarchy</div><h3>信息层级</h3><p>DM Mono 等宽字体用于所有元数据，纯文本界面式的信息架构，无多余装饰。</p><div class="meta-line"># mono · 层级</div></div>
+        <div class="card"><div class="prompt"><span>◆</span> ~/styles $ cat palette</div><h3>冷工业配色</h3><p>墨黑 #0d0f0e + 灰绿 #c5d0c0 + 酸黄 #dfff00 + 深蓝 #2454ff。</p><div class="meta-line"># palette · 工业</div></div>
+        <div class="card"><div class="prompt"><span>◆</span> ~/styles $ cat identity</div><h3>实验档案定位</h3><p>"Experimental Archive" 品牌定位，以开发者/终端文化为视觉语言基础。</p><div class="meta-line"># branding</div></div>
+        <div class="card"><div class="prompt"><span>◆</span> ~/styles $ cat layout</div><h3>Monospace 网格</h3><p>基于等宽字符的隐式网格，所有元素在字符单元内对齐，还原终端文本渲染逻辑。</p><div class="meta-line"># grid · 字符对齐</div></div>
+        <div class="card"><div class="prompt"><span>◆</span> ~/styles $ cat command</div><h3>命令行提示符</h3><p>以 $ 符号和路径模拟命令行提示符，强化终端交互的沉浸感。</p><div class="meta-line"># prompt · $ · 交互</div></div>
+    </div>
+</div>
+
+<script>
+var p=new URLSearchParams(location.search).get('from');
+document.getElementById('backLink').href=p?'index.html?page='+p:'index.html';
+</script>
+</body>
+</html>

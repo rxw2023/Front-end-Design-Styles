@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>前端设计主义展示</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;800;900&family=Noto+Sans+SC:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.prompt-box code{font-size:.75rem;white-space:pre-wrap;word-break:break-all}
+.prompt-label{font-weight:700;font-size:.8rem;color:var(--text-color);margin-bottom:.4rem}
+.pagination{display:flex;justify-content:center;align-items:center;gap:.5rem;padding:1rem 0 2.5rem;flex-wrap:wrap}
+.pagination button{padding:.4rem 1rem;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-color);border-radius:var(--button-radius);cursor:pointer;font-size:.8rem;font-weight:600;transition:.2s;font-family:var(--base-font)}
+.pagination button:hover{background:var(--button-bg);color:var(--button-text)}
+.pagination button.active{background:var(--button-bg);color:var(--button-text);pointer-events:none}
+.pagination button:disabled{opacity:.3;pointer-events:none}
+.page-info{font-size:.8rem;color:var(--text-color);opacity:.6;margin:0 .5rem}
+.lang-btn{background:var(--button-secondary-bg);color:var(--button-secondary-text);border:1px solid var(--border-color);border-radius:var(--button-radius);padding:.3rem .8rem;font-size:.75rem;font-weight:600;cursor:pointer;margin-left:1rem;font-family:var(--base-font);transition:.2s}
+.lang-btn:hover{background:var(--button-bg);color:var(--button-text)}
+.lang-btn.active{background:var(--button-bg);color:var(--button-text)}
+.lang-wrap{position:absolute;right:2rem;top:50%;transform:translateY(-50%);display:flex;gap:.3rem}
+header .top{position:relative;display:flex;justify-content:center;align-items:center}
+header .ov-link{font-size:.75rem;opacity:.6;color:inherit;text-decoration:underline;cursor:pointer}
+header .ov-link:hover{opacity:1}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="top">
+        <h1 data-zh="前端设计主义展示" data-en="Front-end Design Styles">前端设计主义展示</h1>
+        <div class="lang-wrap">
+            <button class="lang-btn" id="langBtn" onclick="setLang(window.lang==='zh'?'en':'zh')">EN</button>
+        </div>
+    </div>
+    <a class="ov-link" href="overview.html" data-zh="→ 风格总览文档" data-en="→ Style Overview Doc">→ 风格总览文档</a>
+</header>
+
+<div class="container">
+    <div class="card-grid" id="cardGrid"></div>
+    <div class="pagination" id="pagination"></div>
+</div>
+
+<div class="theme-indicator" id="themeBar">
+    <span id="themeBarLabel"></span>
+</div>
+
+<script>
+var lang = localStorage.getItem('lang') === 'en' ? 'en' : 'zh';
+
+var T = {
+    zh:{ promptLabel:'示例 Prompt:', viewDetail:'查看详情', applyTheme:'应用主题', unifiedTheme:'统一风格', restoreCards:'恢复各自卡片风格', page:'页', styles:'种风格', cardTheme:'各自卡片风格' },
+    en:{ promptLabel:'Example Prompt:', viewDetail:'View Details', applyTheme:'Apply Theme', unifiedTheme:'Unified Theme', restoreCards:'Restore Card Styles', page:'Page', styles:'Styles', cardTheme:'Individual Card Styles' }
+};
+
+function setLang(l) {
+    lang = l;
+    localStorage.setItem('lang', l);
+    var btn = document.getElementById('langBtn');
+    if (btn) btn.textContent = l === 'zh' ? 'EN' : '中';
+    document.title = l === 'zh' ? '前端设计主义展示' : 'Front-end Design Styles';
+    document.documentElement.lang = l === 'zh' ? 'zh-CN' : 'en';
+    var els = document.querySelectorAll('[data-zh]');
+    for (var i = 0; i < els.length; i++) els[i].textContent = els[i].getAttribute('data-' + l);
+    if (document.getElementById('cardGrid') && document.getElementById('cardGrid').children.length > 0) {
+        renderPage(currentPage);
+    }
+}
+
+var cards = [
+    {cn:"新粗野主义",en:"Neo-Brutalism",prompt:"请设计一个采用新粗野主义风格的网页界面。使用粗黑边框、点阵纹理背景、DM Mono等宽字体大写排版、无圆角的块状卡片，整体呈现未完成和实验性粗粝的视觉感受。",enPrompt:"Design a Neo-Brutalism style webpage. Use thick black borders (3px solid), dot grid background, DM Mono monospace uppercase typography, sharp block cards with hard shadow offset, conveying an unfinished experimental rawness.",theme:"brutalism",link:"brutalism.html"},
+    {cn:"瑞士风格",en:"Swiss Style",prompt:"请设计一个瑞士国际主义平面设计风格的网页。使用12列CSS Grid网格系统，900超粗字重Inter字体标题，非对称卡片布局（4列+8列交替），克制色彩仅用ink黑、muted灰、paper白、line浅灰四色。",enPrompt:"Design a Swiss International Style webpage. Use a 12-column CSS Grid, 900 weight Inter headings, asymmetric card layout (4col+8col), restrained 4-color system: ink/muted/paper/line.",theme:"swiss",link:"swiss.html"},
+    {cn:"日系编辑美学",en:"Japanese Editorial",prompt:"请设计一个日系编辑美学风格的网页。使用暖调纸色背景（#f1f0ea），Noto Sans SC中文正文字体搭配DM Mono英文等宽标签，标题使用荧光黄#dfff00后置下划线装饰，模拟杂志内页的克制与温度。",enPrompt:"Design a Japanese Editorial style webpage. Warm paper background (#f1f0ea), Noto Sans SC + DM Mono typography, fluorescent yellow (#dfff00) underline on headings, low-contrast warm gray dividers for magazine-like restraint.",theme:"japanese",link:"japanese.html"},
+    {cn:"终端/CLI 审美",en:"Terminal Aesthetic",prompt:"请设计一个终端命令行开发者工具审美风格的网页。黑色背景，全文使用DM Mono等宽字体，顶部状态栏带绿色脉冲圆点指示器，冷工业配色（灰绿+酸黄+深蓝），模拟Experimental Archive实验档案工具界面。",enPrompt:"Design a Terminal/CLI style webpage. Black background, DM Mono monospace throughout, green pulsing status dot, cold industrial palette (gray-green + acid yellow + deep blue), simulating dev tool interface.",theme:"terminal",link:"terminal.html"},
+    {cn:"玻璃拟态",en:"Glassmorphism",prompt:"请设计一个玻璃拟态结合复古未来主义风格的网页。深色渐变背景，卡片使用半透明毛玻璃效果（backdrop-filter: blur），全局覆盖CRT扫描线（repeating-linear-gradient），酸黄与深蓝高对比赛博配色，呈现80年代电子美学。",enPrompt:"Design a Glassmorphism + Retrofuturism webpage. Dark gradient background, frosted glass cards (backdrop-filter blur), CRT scanline overlay, acid yellow × deep blue cyber palette, 80s electronic aesthetic.",theme:"glass",link:"glassmorphism.html"},
+    {cn:"体素美学",en:"Voxel Aesthetic",prompt:"请设计一个体素像素美学风格的网页。使用Press Start 2P像素字体，image-rendering: pixelated强制像素化渲染，物品栏式方格布局，立体方块按钮，大地色色谱（草绿+泥土棕+石头灰），HP/经验条游戏风格进度指示器。",enPrompt:"Design a Voxel/Pixel Art style webpage. Press Start 2P font, image-rendering pixelated, inventory grid, chunky 3D buttons, terrain palette (grass green + earth brown + stone gray), HP/EXP bar indicators.",theme:"voxel",link:"voxel.html"},
+    {cn:"新拟物化",en:"Neumorphism",prompt:"请设计一个新拟物化风格的网页。卡片与背景同色（#e0e5ec），使用两组对向box-shadow模拟凸起浮雕效果，大圆角（20px），按下状态用inset内阴影模拟凹陷，整体低对比度柔和灰蓝色调。",enPrompt:"Design a Neumorphism style webpage. Cards same color as background (#e0e5ec), dual box-shadows for embossed effect, 20px rounded corners, inset shadow for pressed state, soft low-contrast blue-gray palette.",theme:"neumorphism",link:"neumorphism.html"},
+    {cn:"复古 Windows 95",en:"Retro Win95",prompt:"请设计一个Windows 95复古风格的网页。使用经典的#008080青绿色桌面背景，3D凸起/凹陷边框，#c0c0c0灰色窗口面板，线性渐变标题栏，MS Sans Serif系统字体，点状虚线聚焦框。",enPrompt:"Design a Windows 95 retro style webpage. Classic teal desktop (#008080), 3D raised/sunken borders, #c0c0c0 gray panels, gradient title bar, MS Sans Serif font, dotted focus outline.",theme:"retro95",link:"retro-95.html"},
+    {cn:"有机自然",en:"Biophilic Design",prompt:"请设计一个有机自然（Biophilic）设计风格的网页。使用大地色系（#f3f0e8奶油米底色、#6b8a5e鼠尾草绿），大圆角柔和曲线，低对比度漫反射阴影模拟自然光，充裕的留白和呼吸感。",enPrompt:"Design a Biophilic organic style webpage. Earth tones (cream #f3f0e8, sage green #6b8a5e), large rounded corners, soft diffused shadows simulating natural light, generous whitespace for breathing room.",theme:"biophilic",link:"biophilic.html"},
+    {cn:"3D 超写实",en:"3D & Hyperrealism",prompt:"请设计一个3D超写实风格的网页。使用perspective透视、translateZ深度层次、多光源阴影系统、逼真的材质纹理（玻璃/金属/织物），打造接近物理真实的视觉沉浸感。",enPrompt:"Design a 3D hyperrealism webpage. Use perspective, translateZ depth, multi-layer shadow lighting, realistic material textures (glass/metal/fabric) for near-physical immersion.",theme:"3d-hyper",link:"3d-hyper.html"},
+    {cn:"鲜艳块状",en:"Vibrant & Block-based",prompt:"请设计一个鲜艳块状风格的网页。使用大胆的高饱和色块拼接，粗重黑色边框，block-based模块化布局，强烈的视觉冲击力，适合创意型初创和游戏类产品。",enPrompt:"Design a vibrant block-based webpage. Bold high-saturation color blocks, thick black borders, modular block layout, strong visual impact for creative startups and gaming.",theme:"vibrant",link:"vibrant.html"},
+    {cn:"OLED 暗黑",en:"Dark Mode OLED",prompt:"请设计一个OLED暗黑模式的网页。使用纯黑#000000底色，极低亮度暗色卡片，高对比白色文字，利用OLED像素级黑色节省电量，打造极致暗色体验。",enPrompt:"Design an OLED dark mode webpage. Pure #000 black background, near-black cards, high-contrast white text, leveraging OLED pixel-off power saving for ultimate dark experience.",theme:"dark-oled",link:"dark-oled.html"},
+    {cn:"无障碍伦理",en:"Accessible & Ethical",prompt:"请设计一个无障碍与伦理设计风格的网页。严格遵循WCAG AA/AAA标准（4.5:1最低对比度），高可读性字体，清晰焦点指示器，语义化HTML结构，确保所有用户平等访问。",enPrompt:"Design an accessible & ethical webpage. Strict WCAG AA/AAA compliance (4.5:1 minimum contrast), highly readable fonts, clear focus indicators, semantic HTML for equal access.",theme:"accessible",link:"accessible.html"},
+    {cn:"粘土风",en:"Claymorphism",prompt:"请设计一个粘土拟物风格的网页。使用柔软臃肿的3D块状元素，柔和的内部和外部阴影，大圆角（24px），暖色泥土色调（#f0c9a0），整体呈现俏皮亲切的玩具质感。",enPrompt:"Design a Claymorphism webpage. Soft chunky 3D blocks, gentle inner/outer shadows, 24px rounded corners, warm clay tones (#f0c9a0), playful toy-like feel.",theme:"clay",link:"clay.html"},
+    {cn:"极光界面",en:"Aurora UI",prompt:"请设计一个Aurora极光风格的网页。使用深色背景上叠加模糊渐变光晕，蓝绿紫红多色交织，毛玻璃卡片（backdrop-filter），呈现北极光般的梦幻色彩流动。",enPrompt:"Design an Aurora UI webpage. Dark background with blurred gradient halos, blue-green-purple interplay, frosted glass cards, evoking northern lights color flow.",theme:"aurora",link:"aurora.html"},
+    {cn:"复古未来",en:"Retro-Futurism",prompt:"请设计一个复古未来主义风格的网页。深邃太空色背景，霓虹粉色点缀，发光边框和辉光阴影，模拟80年代人对未来的想象——既要复古又要超前。",enPrompt:"Design a Retro-Futurism webpage. Deep space purple background, neon pink accents, glowing borders, embodying 80s imagination of the future - retro yet forward-looking.",theme:"retro-future",link:"retro-future.html"},
+    {cn:"扁平设计",en:"Flat Design",prompt:"请设计一个扁平化设计风格的网页。无阴影、无渐变、无纹理的纯平面视觉，使用清晰网格和纯色卡片，配合鲜明的品牌色，移动端友好的极简布局。",enPrompt:"Design a Flat Design webpage. No shadows, gradients or textures - pure 2D. Clear grid, solid color cards, bold brand colors, mobile-friendly minimal layout.",theme:"flat",link:"flat.html"},
+    {cn:"液态玻璃",en:"Liquid Glass",prompt:"请设计一个液态玻璃风格的网页。深色背景上的透明磨砂玻璃卡片（blur:20px），边框微光，圆角流动感（16px），呈现高级SaaS产品质感。",enPrompt:"Design a Liquid Glass webpage. Deep blur (20px) frosted glass cards on dark background, subtle glowing borders, 16px flowing corners for premium SaaS feel.",theme:"liquid",link:"liquid.html"},
+    {cn:"动效驱动",en:"Motion-Driven",prompt:"请设计一个动效驱动风格的网页。cubic-bezier弹簧缓动动画，卡片hover缩放旋转，页面滚动触发渐入效果，动效本身就是设计的主体语言。",enPrompt:"Design a Motion-Driven webpage. Spring easing (cubic-bezier), card scale+rotate on hover, scroll-triggered reveals - motion itself is the design language.",theme:"motion",link:"motion.html"},
+    {cn:"微交互",en:"Micro-interactions",prompt:"请设计一个微交互设计风格的网页。丰富的精细交互动画：按钮点击缩放反馈，hover时的弹性过渡，卡片悬浮渐变阴影，每个像素的交互都有回应。",enPrompt:"Design a Micro-interactions webpage. Rich subtle animations: button scale feedback on click, elastic hover transitions, progressive card shadows - every pixel responds.",theme:"micro",link:"micro.html"},
+    {cn:"包容性设计",en:"Inclusive Design",prompt:"请设计一个包容性设计风格的网页。高对比度黑色边框，大号点击区域（最小44px），清晰的视觉层级，支持键盘导航可见焦点，适合所有能力水平的用户。",enPrompt:"Design an Inclusive Design webpage. High-contrast black borders, large touch targets (min 44px), clear visual hierarchy, visible keyboard focus for all ability levels.",theme:"inclusive",link:"inclusive.html"},
+    {cn:"零界面",en:"Zero Interface",prompt:"请设计一个零界面风格的网页。极致的减法设计——无卡片边框、无背景色、无分割线，内容直接漂浮在白色画布上，仅通过留白和字号区分层级，让内容成为唯一的视觉元素。",enPrompt:"Design a Zero Interface webpage. Extreme subtraction - no card borders, no backgrounds, no dividers. Content floats on white canvas, hierarchy via whitespace and font size alone.",theme:"zero",link:"zero.html"},
+    {cn:"柔和UI进化",en:"Soft UI Evolution",prompt:"请设计一个Soft UI Evolution风格的网页。现代企业级柔和设计：极浅蓝灰底色，微弱的1px边框加多层阴影实现精致层次感，蓝紫色渐变按钮，14px大圆角。",enPrompt:"Design a Soft UI Evolution webpage. Modern enterprise soft design: light blue-gray background, subtle 1px borders with multi-layer shadows, gradient blue-purple buttons, 14px rounded corners.",theme:"soft-ui",link:"soft-ui.html"},
+    {cn:"新粗野2.0",en:"Neubrutalism",prompt:"请设计一个Neubrutalism新粗野2.0风格的网页。亮色背景（#fffaee）+ 硬黑边框+ 硬阴影偏移，鲜艳弹出色（红+黄），这是面向Gen Z的乐观版粗野主义。",enPrompt:"Design a Neubrutalism webpage. Bright background (#fffaee), hard black borders, hard shadow offsets, vibrant pop colors (red + yellow) - the optimistic Gen Z brutalism.",theme:"neubrutal",link:"neubrutal.html"},
+    {cn:"便当盒网格",en:"Bento Box Grid",prompt:"请设计一个Bento Box（便当盒网格）风格的网页。使用不等大的圆角卡片像日式便当盒一样排列，Apple风格的大面积留白，大小卡片错落有致，干净清爽的产品特性展示。",enPrompt:"Design a Bento Box Grid webpage. Uneven rounded cards arranged like a Japanese bento box, Apple-style generous whitespace, varied card sizes for clean product feature showcase.",theme:"bento",link:"bento.html"},
+    {cn:"Y2K 美学",en:"Y2K Aesthetic",prompt:"请设计一个Y2K千禧美学风格的网页。冰蓝色渐变背景，半透明磨砂卡片，镀铬金属质感边框，粉红色调（#ff69b4），气泡圆角，复刻2000年代初的科技乐观主义。",enPrompt:"Design a Y2K Aesthetic webpage. Ice-blue gradient background, translucent frosted cards, chrome metallic borders, hot pink (#ff69b4), bubble corners - early 2000s tech optimism.",theme:"y2k",link:"y2k.html"},
+    {cn:"赛博朋克",en:"Cyberpunk UI",prompt:"请设计一个赛博朋克风格的网页。纯黑底色上的霓虹发光界面，品红+亮绿高对比配色，发光边框，等宽字体，高科技低生活质感。",enPrompt:"Design a Cyberpunk UI webpage. Neon glowing interface on pure black, magenta + bright green high contrast, glowing borders, monospace font, high-tech low-life aesthetic.",theme:"cyberpunk",link:"cyberpunk.html"},
+    {cn:"AI原生界面",en:"AI-Native UI",prompt:"请设计一个AI原生界面风格的网页。使用蓝紫色渐变作为品牌色，流线型圆角卡片，对话式气泡布局，打字机光标动画，呈现AI产品的智能感和人性化。",enPrompt:"Design an AI-Native UI webpage. Blue-purple gradient branding, streamlined rounded cards, conversational bubble layout, typewriter cursor - intelligent and human-centric AI feel.",theme:"ai-native",link:"ai-native.html"},
+    {cn:"孟菲斯设计",en:"Memphis Design",prompt:"请设计一个孟菲斯设计风格的网页。几何色块拼贴、波点锯齿图案、大胆撞色搭配（粉+青+黄），20px胶囊圆角按钮，活泼童趣的80年代后现代风格。",enPrompt:"Design a Memphis Design webpage. Geometric color blocks, polka dot/sawtooth patterns, bold color clashes (pink + cyan + yellow), 20px pill buttons - playful 80s postmodern.",theme:"memphis",link:"memphis.html"},
+    {cn:"蒸汽波",en:"Vaporwave",prompt:"请设计一个蒸汽波（Vaporwave）风格的网页。深紫渐变背景，霓虹粉色文字和青色，复古网格和太阳元素，合成波音乐视觉美学。",enPrompt:"Design a Vaporwave webpage. Deep purple gradient, neon pink text with cyan, retro grid and sun elements, synthwave music visual aesthetic.",theme:"vaporwave",link:"vaporwave.html"},
+    {cn:"维度层叠",en:"Dimensional Layering",prompt:"请设计一个维度层叠风格的网页。多层递进box-shadow营造细腻的纵深层次，白色卡片在浅灰背景上通过阴影差异建立前后关系，仪表盘和卡片布局的最佳方案。",enPrompt:"Design a Dimensional Layering webpage. Multi-tier progressive box-shadows for subtle depth, white cards on light gray with shadow-differentiated z-layers - ideal for dashboards.",theme:"dimensional",link:"dimensional.html"},
+    {cn:"极度极简",en:"Exaggerated Minimalism",prompt:"请设计一个极度极简主义风格的网页。超大号标题（5rem 900字重），极少的文字量，最大限度的留白，纯白背景上仅保留必要元素，顶部细线分割。",enPrompt:"Design an Exaggerated Minimalism webpage. Oversized headings (5rem 900 weight), minimal text, maximum whitespace, white background with only essential elements, thin top-line dividers.",theme:"ex-minimal",link:"ex-minimal.html"},
+    {cn:"动态排版",en:"Kinetic Typography",prompt:"请设计一个动态排版风格的网页。文字即是视觉主体——超大字体（6rem+），900超粗字重，紧凑行高（0.9），极简黑底白字，字体本身就是整个页面的Hero元素。",enPrompt:"Design a Kinetic Typography webpage. Text as the visual hero - oversized (6rem+), 900 weight, tight line-height (0.9), black-on-white minimal - typography IS the hero.",theme:"kinetic",link:"kinetic.html"},
+    {cn:"视差叙事",en:"Parallax Storytelling",prompt:"请设计一个视差叙事风格的网页。多层背景渐变（暖米色→浅棕色），滚动时不同Z轴层以不同速度移动，卡片半透明叠加，营造翻阅故事书的沉浸叙事体验。",enPrompt:"Design a Parallax Storytelling webpage. Multi-layer gradient backgrounds (warm beige to light brown), different scroll speeds per z-layer, translucent card overlays - like turning pages of a storybook.",theme:"parallax",link:"parallax.html"},
+    {cn:"瑞士现代2.0",en:"Swiss Modernism 2.0",prompt:"请设计一个瑞士现代主义2.0风格的网页。纯白极简底色，仅用2px黑色顶部边框分割卡片，超大标题（4rem 900字重），0.85行高，无阴影无圆角，纯粹依赖字体和网格建立秩序。",enPrompt:"Design a Swiss Modernism 2.0 webpage. Pure white, only 2px black top-border on cards, oversized 4rem 900wt headings, 0.85 line-height, no shadows no radius - pure typographic order.",theme:"swiss-2",link:"swiss-2.html"},
+    {cn:"科幻HUD",en:"HUD / Sci-Fi FUI",prompt:"请设计一个科幻HUD（全息界面）风格的网页。深蓝黑底色，发光青色文字和边框，等宽字体，细线框数据面板，透视扫描线，模拟科幻电影中的全息投影操作界面。",enPrompt:"Design a HUD/Sci-Fi FUI webpage. Deep blue-black background, glowing cyan text and borders, monospace, thin-line data panels, perspective scan lines - like sci-fi holographic interfaces.",theme:"hud",link:"hud.html"},
+    {cn:"便当网格2.0",en:"Bento Grids 2.0",prompt:"请设计一个便当网格2.0风格的网页。使用暖灰底色上排列大小不一的圆角白色卡片，红色点缀按钮（#ff3b30），更有温度和活力感。",enPrompt:"Design a Bento Grids 2.0 webpage. Warm gray background with varied-size rounded white cards, red accent buttons (#ff3b30) - warmer and more energetic than Apple Bento.",theme:"bento-2",link:"bento-2.html"},
+    {cn:"空间计算",en:"Spatial UI (VisionOS)",prompt:"请设计一个VisionOS空间计算风格的网页。使用frosted glass玻璃材质卡片（blur:20px），22px大圆角，微光边框，深空蓝背景，悬浮感和空间层次。",enPrompt:"Design a Spatial UI (VisionOS) webpage. Frosted glass cards (blur 20px), 22px rounded corners, subtle glowing borders, deep space blue background with spatial depth.",theme:"spatial",link:"spatial.html"},
+    {cn:"电子墨水",en:"E-Ink / Paper",prompt:"请设计一个电子墨水/纸张风格的网页。模拟电子纸显示屏的阅读体验——暖白纸色背景，柔和的下划线分割，衬线字体（Georgia），16px基础字号和舒适的1.8行高。",enPrompt:"Design an E-Ink/Paper style webpage. Simulating e-paper reading - warm white paper background, soft underline dividers, serif font (Georgia), 16px base size, comfortable 1.8 line-height.",theme:"eink",link:"eink.html"},
+    {cn:"Z世代混沌",en:"Gen Z Chaos / Maximalism",prompt:"请设计一个Gen Z混沌极繁风格的网页。黑色header+亮黄，橙红撞色卡片，粗黑边框，30px胶囊按钮，混乱中有秩序，大胆反叛的年轻审美。",enPrompt:"Design a Gen Z Chaos/Maximalism webpage. Black header + bright yellow, orange-red clash cards, thick black borders, 30px pill buttons - ordered chaos, bold rebellious youth aesthetic.",theme:"genz",link:"genz.html"},
+    {cn:"仿生有机2.0",en:"Biomimetic / Organic 2.0",prompt:"请设计一个仿生有机2.0风格的网页。从自然界形态汲取灵感的半透明层叠卡片，柔和绿灰渐变背景，20px大圆角，深绿色植物色调点缀。",enPrompt:"Design a Biomimetic Organic 2.0 webpage. Translucent layered cards inspired by nature, soft green-gray gradient, 20px rounded corners, deep green botanical accents.",theme:"biomimetic",link:"biomimetic.html"},
+    {cn:"反精致粗糙",en:"Anti-Polish / Raw Aesthetic",prompt:"请设计一个反精致粗糙美学的网页。刻意保留不完美——虚线边框，等宽字体，无阴影无圆角，白色背景上的纯文本排版，拒绝一切精修和装饰，拥抱原始真实。",enPrompt:"Design an Anti-Polish Raw Aesthetic webpage. Deliberately imperfect - dashed borders, monospace, no shadows no radius, pure text on white - rejecting polish, embracing raw authenticity.",theme:"raw",link:"raw.html"},
+    {cn:"触觉数字",en:"Tactile Digital / Deformable UI",prompt:"请设计一个触觉数字变形UI风格的网页。卡片具有物理按压反馈（scale(0.98)），底部2px阴影模拟厚度，暖灰底色，温和的圆角（10px），每个元素都像是可以触摸和按压的实体。",enPrompt:"Design a Tactile Digital/Deformable UI webpage. Cards with physical press feedback (scale 0.98), 2px bottom shadow for thickness, warm gray, gentle 10px corners - elements feel touchable.",theme:"tactile",link:"tactile.html"},
+    {cn:"自然精粹",en:"Nature Distilled",prompt:"请设计一个自然精粹风格的网页。提取自然界的色彩精华——奶油米底色，森林绿header，极简的1px微弱阴影，干净利落的6px圆角，克制而高级的自然感。",enPrompt:"Design a Nature Distilled webpage. Nature's colors refined - cream background, forest green header, minimal 1px subtle shadows, clean 6px radius - restrained elevated nature.",theme:"nature-d",link:"nature-d.html"},
+    {cn:"光标交互",en:"Interactive Cursor Design",prompt:"请设计一个光标交互设计风格的网页。深色科技背景，卡片使用crosshair十字准星光标，发光边框响应鼠标位置，创造独特的鼠标交互视觉体验。",enPrompt:"Design an Interactive Cursor Design webpage. Dark tech background, crosshair cursor on cards, glowing borders responding to mouse position - cursor-driven visual experience.",theme:"cursor",link:"cursor.html"},
+    {cn:"语音优先",en:"Voice-First Multimodal",prompt:"请设计一个语音优先多模态风格的网页。深色背景上的极简声波纹界面，大圆角（16px）半透明卡片，柔和的蓝紫色调，超大触摸目标，适合语音交互的简洁信息架构。",enPrompt:"Design a Voice-First Multimodal webpage. Minimal sound-wave interface on dark background, 16px rounded translucent cards, soft blue-purple tones, large touch targets for voice interaction.",theme:"voice",link:"voice.html"},
+    {cn:"3D产品展示",en:"3D Product Preview",prompt:"请设计一个3D产品展示风格的网页。极简白底配合8px深阴影卡片，营造产品悬浮在空间中的展示感，12px圆角，黑色微妙按钮，如Apple产品页般的沉浸式单品展示。",enPrompt:"Design a 3D Product Preview webpage. Minimal white background with 8px deep shadow cards, product floating in space, 12px corners, subtle black buttons - Apple-style product showcase.",theme:"3d-product",link:"3d-product.html"},
+    {cn:"渐变网格",en:"Gradient Mesh / Aurora Evolved",prompt:"请设计一个渐变网格/极光进化风格的网页。多层radial-gradient光斑叠加在深色背景上（粉红+青色），半透明磨砂玻璃卡片（blur:8px），微光边框，打造梦幻的多色渐变空间感。",enPrompt:"Design a Gradient Mesh/Aurora Evolved webpage. Multiple radial-gradient spots (pink + cyan) on dark background, translucent frosted glass cards (blur 8px), dreamlike multicolor space.",theme:"gradient-mesh",link:"gradient-mesh.html"},
+    {cn:"色差RGB分裂",en:"Chromatic Aberration / RGB Split",prompt:"请设计一个色差RGB分裂风格的网页。纯黑底色上的三色边框卡片（红1px+绿2px+蓝3px），标题文字带RGB色散阴影，模拟镜头色差故障艺术效果。",enPrompt:"Design a Chromatic Aberration/RGB Split webpage. Three-color border cards on black (red 1px + green 2px + blue 3px), RGB dispersion text-shadow - lens aberration glitch art.",theme:"chromatic",link:"chromatic.html"},
+    {cn:"复古胶片",en:"Vintage Analog / Retro Film",prompt:"请设计一个复古胶片/仿古风格网页。暖黄纸色背景，Georgia衬线字体，柔和棕色阴影，胶片颗粒质感卡片，16px字号配1.7行高，复刻老照片和老胶卷的温暖怀旧感。",enPrompt:"Design a Vintage Analog/Retro Film webpage. Warm yellowed paper background, Georgia serif, soft brown shadows, film-grain cards, 16px/1.7 line-height - nostalgic warmth of old photos.",theme:"vintage-film",link:"vintage-film.html"},
+];
+
+var perPage=9, currentPage=1, totalPages=Math.ceil(cards.length/perPage);
+
+var names={brutalism:"新粗野主义",swiss:"瑞士风格",japanese:"日系编辑美学",terminal:"终端/CLI",glass:"玻璃拟态",voxel:"体素美学",neumorphism:"新拟物化",retro95:"复古Win95",biophilic:"有机自然","3d-hyper":"3D超写实",vibrant:"鲜艳块状","dark-oled":"OLED暗黑",accessible:"无障碍伦理",clay:"粘土风",aurora:"极光界面","retro-future":"复古未来",flat:"扁平设计",liquid:"液态玻璃",motion:"动效驱动",micro:"微交互",inclusive:"包容性设计",zero:"零界面","soft-ui":"柔和UI","neubrutal":"新粗野2.0",bento:"便当盒网格",y2k:"Y2K美学",cyberpunk:"赛博朋克","ai-native":"AI原生","memphis":"孟菲斯",vaporwave:"蒸汽波",dimensional:"维度层叠","ex-minimal":"极度极简",kinetic:"动态排版",parallax:"视差叙事","swiss-2":"瑞士现代2.0",hud:"科幻HUD","bento-2":"便当网格2.0",spatial:"空间计算",eink:"电子墨水",genz:"Z世代混沌",biomimetic:"仿生有机2.0",raw:"反精致粗糙",tactile:"触觉数字","nature-d":"自然精粹",cursor:"光标交互",voice:"语音优先","3d-product":"3D产品","gradient-mesh":"渐变网格",chromatic:"色差RGB","vintage-film":"复古胶片"};
+
+var enNames={brutalism:"Neo-Brutalism",swiss:"Swiss Style",japanese:"Japanese Editorial",terminal:"Terminal/CLI",glass:"Glassmorphism",voxel:"Voxel Aesthetic",neumorphism:"Neumorphism",retro95:"Retro Win95",biophilic:"Biophilic","3d-hyper":"3D Hyperrealism",vibrant:"Vibrant Block","dark-oled":"Dark OLED",accessible:"Accessible",clay:"Claymorphism",aurora:"Aurora UI","retro-future":"Retro-Futurism",flat:"Flat Design",liquid:"Liquid Glass",motion:"Motion-Driven",micro:"Micro-interactions",inclusive:"Inclusive",zero:"Zero UI","soft-ui":"Soft UI","neubrutal":"Neubrutalism",bento:"Bento Box",y2k:"Y2K",cyberpunk:"Cyberpunk","ai-native":"AI-Native","memphis":"Memphis",vaporwave:"Vaporwave",dimensional:"Dimensional", "ex-minimal":"Ex-Minimal",kinetic:"Kinetic",parallax:"Parallax","swiss-2":"Swiss 2.0",hud:"HUD FUI","bento-2":"Bento 2.0",spatial:"Spatial UI",eink:"E-Ink",genz:"Gen Z Chaos",biomimetic:"Biomimetic",raw:"Raw Aesthetic",tactile:"Tactile","nature-d":"Nature Distilled",cursor:"Cursor",voice:"Voice-First","3d-product":"3D Product","gradient-mesh":"Gradient Mesh",chromatic:"Chromatic","vintage-film":"Vintage Film"};
+
+function applyTheme(id) {
+    document.body.className='theme-'+id;
+    var nm=lang==='zh'?names[id]:enNames[id];
+    document.getElementById('themeBarLabel').textContent=(lang==='zh'?'统一风格: ':'Unified: ')+nm;
+    document.getElementById('themeBar').classList.add('active');
+    document.getElementById('themeBar').innerHTML='<span id="themeBarLabel">'+(lang==='zh'?'统一风格: ':'Unified: ')+nm+'</span> <button onclick="restoreCardThemes()">'+(lang==='zh'?'恢复各自卡片风格':'Restore Card Styles')+'</button>';
+    renderPage(currentPage,false);
+}
+
+function restoreCardThemes() {
+    document.body.className='theme-swiss';
+    document.getElementById('themeBar').classList.remove('active');
+    document.getElementById('themeBar').innerHTML='<span id="themeBarLabel">'+(lang==='zh'?'各自卡片风格':'Individual Card Styles')+'</span>';
+    renderPage(currentPage,true);
+}
+
+function renderPage(page, wrapped) {
+    if (wrapped===undefined) wrapped=true;
+    currentPage=page;
+    var start=(page-1)*perPage, end=start+perPage, pgCards=cards.slice(start,end);
+    var t=T[lang];
+    document.getElementById('cardGrid').innerHTML=pgCards.map(function(c){
+        var label=lang==='zh'?c.cn+'<br>'+c.en:c.en;
+        var ptext=lang==='zh'?c.prompt:c.enPrompt||c.prompt;
+        if (wrapped) {
+            return '<div class="theme-'+c.theme+'" style="background-image:none;perspective:none"><div class="card"><div class="card-body"><h3>'+label+'</h3><p class="prompt-label">'+t.promptLabel+'</p><div class="prompt-box"><code>'+ptext+'</code></div><div class="card-actions"><a href="'+c.link+'?from='+page+'" class="btn btn-primary">'+t.viewDetail+'</a><button class="btn btn-secondary" onclick="applyTheme(\''+c.theme+'\')">'+t.applyTheme+'</button></div></div></div></div>';
+        }
+        return '<div class="card"><div class="card-body"><h3>'+label+'</h3><p class="prompt-label">'+t.promptLabel+'</p><div class="prompt-box"><code>'+ptext+'</code></div><div class="card-actions"><a href="'+c.link+'?from='+page+'" class="btn btn-primary">'+t.viewDetail+'</a><button class="btn btn-secondary" onclick="applyTheme(\''+c.theme+'\')">'+t.applyTheme+'</button></div></div></div>';
+    }).join('');
+
+    var pagHTML='';
+    pagHTML+='<button onclick="renderPage(1)"'+(page===1?' disabled':'')+'>«</button>';
+    pagHTML+='<button onclick="renderPage('+(page-1)+')"'+(page===1?' disabled':'')+'>‹</button>';
+    for (var i=1;i<=totalPages;i++) pagHTML+='<button onclick="renderPage('+i+')" class="'+(i===page?'active':'')+'">'+i+'</button>';
+    pagHTML+='<button onclick="renderPage('+(page+1)+')"'+(page===totalPages?' disabled':'')+'>›</button>';
+    pagHTML+='<button onclick="renderPage('+totalPages+')"'+(page===totalPages?' disabled':'')+'>»</button>';
+    pagHTML+='<span class="page-info">'+page+' / '+totalPages+' '+t.page+' · '+cards.length+' '+t.styles+'</span>';
+    paginationEl.innerHTML=pagHTML;
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+
+var paginationEl=document.getElementById('pagination');
+
+setLang(lang);
+restoreCardThemes();
+
+var p=parseInt(new URLSearchParams(location.search).get('page'));
+if (p>0 && p<=totalPages) renderPage(p);
+</script>
+</body>
+</html>

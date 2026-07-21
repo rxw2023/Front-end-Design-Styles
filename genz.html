@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z世代混沌 — Gen Z Chaos / Maximalism</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;min-height:100vh;transition:background .3s,color .3s}.back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.1em;padding:2rem 0 0 2rem;opacity:.5;color:var(--text-color)}.back:hover{opacity:1}.container{max-width:1200px;margin:0 auto;padding:2rem}.label{font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.2em;margin-bottom:.5rem;opacity:.5;color:var(--text-color)}h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;margin-bottom:.3rem;color:var(--heading-color)}.sub{font-size:.85rem;margin-bottom:2rem;font-family:DM Mono,monospace;opacity:.4;color:var(--text-color)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--card-radius,10px);padding:1.5rem;box-shadow:var(--card-shadow);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:var(--card-hover-shadow)}.card .num{font-family:DM Mono,monospace;font-size:.65rem;opacity:.3;letter-spacing:.15em;margin-bottom:.5rem}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--heading-color)}.card p{font-size:.82rem;line-height:1.7;color:var(--text-color);opacity:.7}.palette{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}.palette .c{width:40px;height:40px;border-radius:8px;border:1px solid var(--border-color);box-shadow:var(--card-shadow)}</style></head>
+<body class="theme-genz">
+<a href="index.html" id="backLink" class="back">&#8592; 返回首页</a>
+<div class="container">
+<div class="label">— 40 · GEN Z CHAOS / MAXIMALISM</div>
+<h1>Z世代混沌</h1>
+<div class="sub">亮黄撞色 · 粗黑边框 · 大胆叛逆</div>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3>黑白黄橙撞色</h3><p>黑色header+亮黄文字+橙红卡片+黄底黑字按钮——极限色彩碰撞。</p></div>
+<div class="card"><div class="num">02</div><h3>硬阴影偏移</h3><p>卡片3px 3px 0橙色硬阴影，每个卡片阴影颜色不同，混乱中有秩序。</p></div>
+<div class="card"><div class="num">03</div><h3>粗黑边框</h3><p>2px solid #000粗边框，配合彩色硬阴影，形成反精致的设计宣言。</p></div>
+<div class="card"><div class="num">04</div><h3>30px大胶囊按钮</h3><p>超大圆角橙色按钮——不像传统CTAs含蓄，而是大喊点我。</p></div>
+<div class="card"><div class="num">05</div><h3>乐观混乱</h3><p>每个元素的位置、颜色、大小都是精心设计的'不完美'。</p></div>
+<div class="card"><div class="num">06</div><h3>Z世代宣言</h3><p>拒绝品牌手册、拒绝设计系统、拒绝干净——代表数字原生反叛审美。</p></div>
+</div>
+<div class="palette"><div class="c" style="background:#fff" title="#fff"></div><div class="c" style="background:#000" title="#000"></div><div class="c" style="background:#ff4500" title="#ff4500"></div><div class="c" style="background:#fffa00" title="#fffa00"></div><div class="c" style="background:#cc3700" title="#cc3700"></div></div>
+</div>
+
+<script>
+(function(){
+  var p=new URLSearchParams(location.search).get('from');
+  var link=document.getElementById('backLink');
+  if(p) link.href='index.html?page='+p;
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

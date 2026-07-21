@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>瑞士风格 — Swiss Style</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #fafaf9; color: #1a1a1a; min-height: 100vh; }
+.back { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; color: #1a1a1a; opacity: 0.5; padding: 2rem 0 0 2rem; }
+.back:hover { opacity: 1; }
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: #6b7280; opacity: 1; margin-bottom: 0.5rem; }
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 0.3rem; }
+.sub { font-size: 0.75rem; margin-bottom: 2rem; font-family: 'DM Mono', monospace; opacity: 0.5; color: #6b7280; }
+.grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+.big { grid-column: span 8; border: 1px solid #e5e7eb; padding: 2rem; background: #fafaf9; }
+.sml { grid-column: span 4; border: 1px solid #e5e7eb; padding: 1.5rem; background: #fafaf9; }
+.full { grid-column: span 12; border: 1px solid #e5e7eb; padding: 1.5rem 2rem; background: #fafaf9; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.big h3, .sml h3 { font-weight: 900; font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+.sml h3 { font-size: 1.1rem; }
+.big p, .sml p { font-size: 0.85rem; color: #6b7280; line-height: 1.6; }
+.meta { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #6b7280; letter-spacing: 0.05em; }
+</style>
+</head>
+<body>
+
+<a href="#" id="backLink" class="back">← 返回首页</a>
+
+<div class="container">
+    <div class="label">— 02 · SWISS STYLE</div>
+    <h1>瑞士风格</h1>
+    <div class="sub">12列网格 · 900字重 · 非对称布局 · 四色系统</div>
+    <div class="grid-12">
+        <div class="big">
+            <h3>12 列网格系统</h3>
+            <p>grid-template-columns: repeat(12, 1fr) — 非对称卡片布局（4列+8列交替），纯粹依赖排版层级传达信息，仅用四色。</p>
+            <div class="meta">GRID • 12-COL • ASYMMETRY</div>
+        </div>
+        <div class="sml">
+            <h3>排版层级</h3>
+            <p>超粗 900 标题 + 等宽标签 + 正文，三层信息结构清晰可辨。</p>
+            <div class="meta">TYPE • 900</div>
+        </div>
+        <div class="sml">
+            <h3>目录式编排</h3>
+            <p>Index / 2026.07 式的索引系统，为内容建立秩序感。</p>
+            <div class="meta">INDEX • 2026</div>
+        </div>
+        <div class="full">
+            <span class="meta">四色系统</span>
+            <span style="display:flex;gap:1.5rem;font-family:'DM Mono',monospace;font-size:0.7rem;"><span>— ink #1a1a1a</span><span>— muted #6b7280</span><span>— paper #fafaf9</span><span>— line #e5e7eb</span></span>
+        </div>
+        <div class="sml">
+            <h3>非对称布局</h3>
+            <p>4列+8列交替，而非统一尺寸——打破常规对称的视觉节奏。</p>
+            <div class="meta">LAYOUT • ASYMMETRIC</div>
+        </div>
+        <div class="sml">
+            <h3>克制装饰</h3>
+            <p>无多余的视觉噪音，一切以功能性为前提。</p>
+            <div class="meta">MINIMAL • FUNCTIONAL</div>
+        </div>
+    </div>
+</div>
+
+<script>
+var p=new URLSearchParams(location.search).get('from');
+document.getElementById('backLink').href=p?'index.html?page='+p:'index.html';
+</script>
+</body>
+</html>

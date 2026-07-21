@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>体素美学 — Voxel Aesthetic</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Press Start 2P', monospace; background: #3d3d3d; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 16px 16px; color: #c8c0a8; image-rendering: pixelated; min-height: 100vh; }
+.back { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; font-size: 0.4rem; letter-spacing: 0.1em; color: #6d6d6d; padding: 2rem 0 0 2rem; }
+.back:hover { color: #C4A87C; }
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.label { font-size: 0.45rem; letter-spacing: 0.2em; color: #8a7a6a; opacity: 1; margin-bottom: 0.5rem; }
+h1 { font-size: clamp(0.9rem, 3vw, 1.5rem); font-weight: 400; color: #87CEEB; margin-bottom: 0.3rem; text-shadow: 3px 3px 0 #2B2B2B; }
+.sub { font-size: 0.4rem; font-family: 'Press Start 2P', monospace; margin-bottom: 2rem; color: #8a7a6a; opacity: 0.6; }
+.inv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; background: #2B2B2B; padding: 8px; max-width: 320px; border: 3px solid #555; box-shadow: inset 0 -3px 0 #1a1a1a, inset 0 3px 0 #6d6d6d; }
+.inv-slot { aspect-ratio: 1; background: #3d3d3d; border: 2px solid #555; box-shadow: inset 0 -2px 0 #2B2B2B, inset 0 2px 0 #6d6d6d; display: flex; align-items: center; justify-content: center; font-size: 0.45rem; color: #6d6d6d; }
+.inv-slot.filled { background: #4a4a4a; border-color: #7B8F3A; box-shadow: inset 0 -2px 0 #2B2B2B, inset 0 2px 0 #7B8F3A; color: #7B8F3A; }
+.stat-bar { display: flex; align-items: center; gap: 6px; margin-top: 0.5rem; font-size: 0.35rem; }
+.stat-bar .bar-bg { flex: 1; height: 8px; background: #2B2B2B; border: 1px solid #555; box-shadow: inset 0 1px 0 #1a1a1a; }
+.stat-bar .bar-fill { height: 100%; background: #7B8F3A; }
+.stat-bar .bar-fill.hp { background: #C4A87C; width: 45%; }
+.stat-bar .bar-fill.exp { background: #3F76B4; width: 80%; }
+.v-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 6px; margin-top: 1.5rem; }
+.card { background: #4a4a4a; border: 2px solid #6d6d6d; box-shadow: inset 0 -4px 0 #2B2B2B, 4px 4px 0 #2B2B2B; padding: 1rem; }
+.card h3 { font-size: 0.45rem; color: #C4A87C; margin-bottom: 0.5rem; line-height: 1.5; }
+.card p { font-size: 0.35rem; color: #8a7a6a; font-family: 'DM Mono', monospace; line-height: 1.8; }
+.pixel-btn { display: inline-block; background: #6d6d6d; border: none; border-bottom: 4px solid #3d3d3d; border-right: 2px solid #3d3d3d; color: #e8e0d0; font-family: 'Press Start 2P', monospace; font-size: 0.4rem; padding: 0.5rem 1rem; cursor: pointer; margin-top: 1rem; image-rendering: pixelated; }
+.pixel-btn:active { border-bottom-width: 1px; transform: translateY(3px); }
+.palette { display: flex; gap: 4px; margin-top: 1.5rem; flex-wrap: wrap; }
+.pixel { width: 28px; height: 28px; border: 1px solid #555; box-shadow: inset 0 -2px 0 #2B2B2B; }
+</style>
+</head>
+<body>
+
+<a href="#" id="backLink" class="back">← 返回首页</a>
+
+<div class="container">
+    <div class="label">— 06 · VOXEL AESTHETIC</div>
+    <h1>体素美学</h1>
+    <div class="sub">像素化 · 立体方块 · 物品栏网格 · 大地色色谱</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+        <div class="inv-grid">
+            <div class="inv-slot"></div><div class="inv-slot filled">◆</div><div class="inv-slot"></div><div class="inv-slot"></div>
+            <div class="inv-slot"></div><div class="inv-slot filled">◈</div><div class="inv-slot"></div><div class="inv-slot"></div>
+            <div class="inv-slot"></div><div class="inv-slot"></div><div class="inv-slot filled">■</div><div class="inv-slot"></div>
+            <div class="inv-slot"></div><div class="inv-slot"></div><div class="inv-slot"></div><div class="inv-slot filled">▲</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;justify-content:center;">
+            <div><div style="font-size:0.35rem;margin-bottom:0.25rem;">HP</div><div class="stat-bar"><div class="bar-bg"><div class="bar-fill hp"></div></div><span>45%</span></div></div>
+            <div><div style="font-size:0.35rem;margin-bottom:0.25rem;">EXP</div><div class="stat-bar"><div class="bar-bg"><div class="bar-fill exp"></div></div><span>80%</span></div></div>
+            <div><div style="font-size:0.35rem;margin-bottom:0.25rem;">STAMINA</div><div class="stat-bar"><div class="bar-bg"><div class="bar-fill" style="width:30%;background:#C4A87C;"></div></div><span>30%</span></div></div>
+        </div>
+    </div>
+
+    <div class="v-grid">
+        <div class="card"><h3>像素主义</h3><p>image-rendering: pixelated · 0圆角 · 0过渡区 · 立体凸起/凹陷边框</p></div>
+        <div class="card"><h3>游戏界面</h3><p>物品栏网格 · 石头按钮 · HP经验条 · 页面即游戏内界面</p></div>
+        <div class="card"><h3>大地色谱</h3><p>草绿 #7B8F3A · 泥土棕 #8B6B3D · 石头灰 #6D6D6D · 橡木黄 #C4A87C</p></div>
+        <div class="card"><h3>方块空间</h3><p>16x16隐式网格 · 垒砌感排列 · aspect-ratio:1方形容器</p></div>
+        <div class="card"><h3>低分辨率怀旧</h3><p>无抗锯齿 · 无阴影模糊 · steps()帧动画 · 8-bit色板</p></div>
+        <div class="card"><h3>纯色平涂</h3><p>无渐变 · 模拟低色深渲染 · 控制在游戏原始材质范围</p></div>
+    </div>
+
+    <div class="palette">
+        <div class="pixel" style="background:#7B8F3A" title="草绿"></div>
+        <div class="pixel" style="background:#8B6B3D" title="泥土棕"></div>
+        <div class="pixel" style="background:#6D6D6D" title="石头灰"></div>
+        <div class="pixel" style="background:#C4A87C" title="橡木黄"></div>
+        <div class="pixel" style="background:#87CEEB" title="天空蓝"></div>
+        <div class="pixel" style="background:#3F76B4" title="水蓝"></div>
+    </div>
+
+    <button class="pixel-btn">[ 石头按钮 ]</button>
+</div>
+
+<script>
+var p=new URLSearchParams(location.search).get('from');
+document.getElementById('backLink').href=p?'index.html?page='+p:'index.html';
+</script>
+</body>
+</html>

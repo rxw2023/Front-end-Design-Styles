@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>极光界面 — Aurora UI</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;min-height:100vh;transition:background .3s,color .3s}.back{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.1em;padding:2rem 0 0 2rem;opacity:.5;color:var(--text-color)}.back:hover{opacity:1}.container{max-width:1200px;margin:0 auto;padding:2rem}.label{font-family:DM Mono,monospace;font-size:.7rem;letter-spacing:.2em;margin-bottom:.5rem;opacity:.5;color:var(--text-color)}h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;margin-bottom:.3rem;color:var(--heading-color)}.sub{font-size:.85rem;margin-bottom:2rem;font-family:DM Mono,monospace;opacity:.4;color:var(--text-color)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--card-radius,10px);padding:1.5rem;box-shadow:var(--card-shadow);transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:var(--card-hover-shadow)}.card .num{font-family:DM Mono,monospace;font-size:.65rem;opacity:.3;letter-spacing:.15em;margin-bottom:.5rem}.card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:var(--heading-color)}.card p{font-size:.82rem;line-height:1.7;color:var(--text-color);opacity:.7}.palette{display:flex;gap:.75rem;margin-top:2rem;flex-wrap:wrap}.palette .c{width:40px;height:40px;border-radius:8px;border:1px solid var(--border-color);box-shadow:var(--card-shadow)}</style></head>
+<body class="theme-aurora">
+<a href="index.html" id="backLink" class="back">&#8592; 返回首页</a>
+<div class="container">
+<div class="label">— 15 · AURORA UI</div>
+<h1>极光界面</h1>
+<div class="sub">渐变光晕 · 毛玻璃 · 蓝绿紫交织</div>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3>极光渐变背景</h3><p>深色夜空底色上叠加多个radial-gradient半透明光斑（蓝绿紫），模拟北极光在夜空中流动的色彩效果。</p></div>
+<div class="card"><div class="num">02</div><h3>毛玻璃卡片</h3><p>backdrop-filter: blur(10px) + 半透明底色，卡片后面的极光色彩透过玻璃隐约可见。</p></div>
+<div class="card"><div class="num">03</div><h3>微弱发光边框</h3><p>1px半透明边框在深色背景下产生微妙的发光轮廓，不抢眼但精致。</p></div>
+<div class="card"><div class="num">04</div><h3>翡翠绿按钮</h3><p>#0d9488 teal-green按钮在暗色背景上形成清爽的色彩锚点，更柔和高级。</p></div>
+<div class="card"><div class="num">05</div><h3>辉光悬浮感</h3><p>hover时阴影扩展并添加微弱青色调，产生悬浮在光晕中的质感。</p></div>
+<div class="card"><div class="num">06</div><h3>低对比优雅</h3><p>文字颜色控制在低对比但清晰的范围，不抢夺极光背景的视觉主导权。</p></div>
+</div>
+<div class="palette"><div class="c" style="background:#0a0f1e" title="#0a0f1e"></div><div class="c" style="background:#0d9488" title="#0d9488"></div><div class="c" style="background:#c8daf0" title="#c8daf0"></div><div class="c" style="background:#141e38" title="#141e38"></div><div class="c" style="background:#0f766e" title="#0f766e"></div></div>
+</div>
+
+<script>
+(function(){
+  var p=new URLSearchParams(location.search).get('from');
+  var link=document.getElementById('backLink');
+  if(p) link.href='index.html?page='+p;
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
