@@ -706,3 +706,9 @@ footer {
 .theme-vintage-film { --page-bg: #f5e8d0; background: #f5e8d0; --text-color: #4a3a20; --heading-color: #2a1a08; --card-bg: #faf0dd; --card-shadow: 0 2px 8px rgba(80,50,20,0.08); --card-hover-shadow: 0 4px 16px rgba(80,50,20,0.12); --header-bg: #3a2a10; --header-text: #f5e8d0; --button-bg: #8b6914; --button-hover-bg: #6b4a08; --button-text: #fff; --button-radius: 2px; --card-radius: 4px; --base-font: 'Georgia', 'Times New Roman', serif; --heading-font: 'Georgia', 'Times New Roman', serif; }
 .theme-vintage-film .card { border: 1px solid #d4c4a0; }
 .theme-vintage-film body { font-size: 16px; line-height: 1.7; }
+
+/* =============================================
+   THEME: GitHub Style (Default Homepage)
+   ============================================= */
+.theme-github { --page-bg: #f6f8fa; background: #f6f8fa; --text-color: #1f2328; --heading-color: #1f2328; --card-bg: #fff; --card-shadow: 0 1px 0 rgba(31,35,40,0.04); --card-hover-shadow: 0 3px 12px rgba(31,35,40,0.08); --header-bg: #24292f; --header-text: #fff; --button-bg: #2da44e; --button-hover-bg: #2c974b; --button-text: #fff; --button-radius: 6px; --card-radius: 6px; --base-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif; --heading-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif; --border-color: #d0d7de; --button-secondary-bg: #f6f8fa; --button-secondary-text: #24292f; --prompt-bg: #f6f8fa; --prompt-text: #656d76; --prompt-border: #d0d7de; }
+.theme-github .card { border: 1px solid #d0d7de; }
